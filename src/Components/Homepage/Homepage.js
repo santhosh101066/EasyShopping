@@ -1,4 +1,5 @@
 import React from "react";
+import Carousels from "./Carousels";
 import Categorize from "./Categorize";
 
 function Homepage(props) {
@@ -19,8 +20,10 @@ function Homepage(props) {
   ];
   return (
     <div>
+      <Carousels/>
       <Categorize category={"Laptop"} products={laptops} />
       <Categorize category={"Mobile"} products={mobile} />
+      
     </div>
   );
 }
