@@ -1,0 +1,41 @@
+.carosal-container img {
+  height: 60vh;
+  object-fit: cover;
+  border-radius: 20px;
+}
+.home-category {
+  margin-top: 10px;
+  background-color: rgb(43, 46, 74);
+  color: white;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+  gap: 0;
+  user-select: none;
+
+}
+.home-category div{
+    border: 1px solid white;
+    display: flex;
+    flex-flow: column;
+    width: 100%;
+    margin: 0;
+    height: 150px;
+    align-items: center;
+    transition: background-color .25s ease-in ;
+}
+.home-category img{
+    height: 100px;
+    width: 100px;
+}
+.home-category div span{
+    display: block;
+    margin: auto;
+    width: fit-content;
+}
+.home-category div:hover{
+    background-color: rgb(86, 92, 146);
+    
+}
+
+

@@ -1,0 +1,195 @@
+.auth {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.33);
+  z-index: 2;
+}
+.login {
+  background-color: rgb(43, 46, 74);
+  width: 600px;
+  display: block;
+  position: absolute;
+  max-height: 90vh;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+  color: white;
+  padding: 10px;
+  overflow: auto;
+}
+.brand {
+  width: fit-content;
+  margin: auto;
+}
+.brand img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 2px solid rgb(76, 80, 118);
+}
+.brand span:first-child {
+  display: block;
+  font-size: x-large;
+  font-weight: bold;
+  font-family: sans-serif;
+}
+.brand span:nth-child(2) {
+  font-size: small;
+  font-family: sans-serif;
+  font-style: italic;
+  padding-left: 10px;
+}
+
+.login-text {
+  margin-top: 20px;
+}
+.login-text input {
+  display: block;
+  font-size: medium;
+  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  height: 40px;
+  background-color: rgba(43, 46, 74, 0);
+  border-radius: 10px;
+  border: 2px solid rgb(76, 80, 118);
+  color: white;
+  padding: 5px;
+  outline-color: rgb(76, 80, 118);
+  border-color: rgb(76, 80, 118);
+}
+.login-text input:focus {
+  outline: 2px solid rgb(134, 138, 172);
+}
+.login-text input::placeholder {
+  color: rgb(129, 135, 196);
+}
+.login-text input:invalid{
+    outline: 2px solid rgb(241, 124, 124);
+}
+.login-text button {
+  display: block;
+  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  height: 40px;
+  padding: 10px;
+  font-size: medium;
+  border-radius: 7px;
+  background-color: rgb(123, 194, 16);
+  background-image: linear-gradient(180deg, #7bc210 50%, #609511);
+  border: none;
+  width: 70px;
+}
+.login-text button:hover {
+  background-color: rgb(123, 194, 16);
+  background-image: linear-gradient(180deg, #7bc210, #83b636);
+}
+.login-text button:active {
+  background-image: linear-gradient(180deg, #60970c, #85cd19);
+}
+.login-text span {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: block;
+  width: fit-content;
+  margin: auto;
+}
+.login-text span a:visited {
+  color: blue;
+}
+.login img {
+  animation: rotate 10s infinite linear;
+}
+.close-auth {
+  position: absolute;
+  display: block;
+  width: 20px;
+  height: 20px;
+  border: 1px white solid;
+  text-align: center;
+  border-radius: 50%;
+  right: 10px;
+  top: 10px;
+  cursor: pointer;
+}
+@keyframes rotate {
+  0% {
+    rotate: 0deg;
+  }
+  100% {
+    rotate: 360deg;
+  }
+}
+.signup-text {
+  margin-top: 20px;
+  display: grid;
+  justify-content: space-around;
+}
+.signup-text input {
+  font-size: medium;
+  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  height: 40px;
+  background-color: rgba(43, 46, 74, 0);
+  border-radius: 10px;
+  border: 2px solid rgb(76, 80, 118);
+  color: white;
+  padding: 5px;
+  outline-color: rgb(76, 80, 118);
+  border-color: rgb(76, 80, 118);
+}
+.signup-text input:nth-child(odd){
+    grid-column: 1/2;
+}
+.signup-text input:nth-child(even){
+    grid-column: 2/2;
+}
+.signup-text input:focus {
+  outline: 2px solid rgb(134, 138, 172);
+}
+.signup-text input::placeholder {
+  color: rgb(129, 135, 196);
+}
+.signup-text button {
+  display: block;
+  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  height: 40px;
+  padding: 10px;
+  font-size: medium;
+  border-radius: 7px;
+  background-color: rgb(123, 194, 16);
+  background-image: linear-gradient(180deg, #7bc210 50%, #609511);
+  border: none;
+  width: 70px;
+  grid-column: 1/3;
+}
+.signup-text button:hover {
+  background-color: rgb(123, 194, 16);
+  background-image: linear-gradient(180deg, #7bc210, #83b636);
+}
+.signup-text button:active {
+  background-image: linear-gradient(180deg, #60970c, #85cd19);
+}
+.signup-text span {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: block;
+  width: fit-content;
+  margin: auto;
+  grid-column: 1/3;
+}
+.signup-text span a:visited {
+  color: blue;
+}
+.invalid{
+    font-size: smaller;
+    color: rgb(241, 124, 124);
+}

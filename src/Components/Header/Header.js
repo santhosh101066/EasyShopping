@@ -1,15 +1,18 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-function Header(props) {
+function Header({setLogin}) {
   const navigate = useNavigate();
   return (
     <div className="header">
       <nav>
         <ul>
           <li style={{ padding: 0, marginLeft: "20px" }} className="app-title">
-            <img src="logoalone.png" alt="logo"></img>
-            <span>Easy Shopping</span>
+            <img src="/assets/logo/logoalone.png" alt="logo"></img>
+            <div className="header-title">
+              <span>Easy Shopping</span>
+              <span>For Electronics</span>
+            </div>
           </li>
           <li onClick={() => navigate("/")}>Home</li>
           <div className="category">
@@ -23,7 +26,7 @@ function Header(props) {
           </div>
           <li>Wish List</li>
           <li>My Cart</li>
-          <li>Login</li>
+          <li onClick={()=>setLogin(true)}>Login</li>
         </ul>
       </nav>
     </div>

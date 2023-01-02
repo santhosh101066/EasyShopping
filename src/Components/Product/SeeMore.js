@@ -1,5 +1,5 @@
 import React from "react";
-import "./SeeMore.css";
+import "../../CSS/SeeMore.css";
 import { useNavigate } from "react-router-dom";
 function SeeMore({category}) {
     const navigate=useNavigate()
