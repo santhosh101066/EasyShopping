@@ -2,6 +2,7 @@ import React from "react";
 import "../../CSS/Carousel.css";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+
 function Carousels(props) {
   return (
     <Carousel showThumbs={false} autoPlay infiniteLoop >

@@ -6,13 +6,15 @@
   height: 100%;
   background-color: rgba(255, 255, 255, 0.33);
   z-index: 2;
+  animation: login-intro 0.25s normal 1 ease-out;
 }
 .login {
   background-color: rgb(43, 46, 74);
   width: 600px;
   display: block;
   position: absolute;
-  max-height: 90vh;
+  max-height: 90%;
+  max-width: 90%;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
@@ -68,8 +70,8 @@
 .login-text input::placeholder {
   color: rgb(129, 135, 196);
 }
-.login-text input:invalid{
-    outline: 2px solid rgb(241, 124, 124);
+.login-text input:invalid {
+  outline: 2px solid rgb(241, 124, 124);
 }
 .login-text button {
   display: block;
@@ -127,7 +129,12 @@
 }
 .signup-text {
   margin-top: 20px;
+  display: block;
+  justify-content: space-around;
+}
+.signup-text .cover-me{
   display: grid;
+  grid-template-columns: repeat(auto-fit,250px);
   justify-content: space-around;
 }
 .signup-text input {
@@ -144,12 +151,12 @@
   outline-color: rgb(76, 80, 118);
   border-color: rgb(76, 80, 118);
 }
-.signup-text input:nth-child(odd){
-    grid-column: 1/2;
+/* .signup-text input:nth-child(odd) {
+  grid-column: 1/2;
 }
-.signup-text input:nth-child(even){
-    grid-column: 2/2;
-}
+.signup-text input:nth-child(even) {
+  grid-column: 2/2;
+} */
 .signup-text input:focus {
   outline: 2px solid rgb(134, 138, 172);
 }
@@ -184,12 +191,49 @@
   display: block;
   width: fit-content;
   margin: auto;
-  grid-column: 1/3;
 }
 .signup-text span a:visited {
   color: blue;
 }
-.invalid{
-    font-size: smaller;
-    color: rgb(241, 124, 124);
+.signup-text input:invalid {
+  outline: 2px solid rgb(241, 124, 124);
+}
+
+.invalid {
+  font-size: small;
+  color: rgb(241, 124, 124);
+}
+.password-dropdown {
+  display: none;
+  color: rgb(255, 255, 255);
+  background-color: rgb(80, 86, 141);
+  border-radius: 10px;
+  position: absolute;
+  transform: translateY(-5px);
+  font-size: smaller;
+}
+.password-dropdown ul {
+  list-style: none;
+  padding-inline-start: 0px;
+  padding: 8px;
+  margin: 0;
+}
+input[name="password"]:focus + .password-dropdown {
+  display: block;
+}
+.valid {
+  font-size: small;
+  color: rgb(128, 241, 124);
+}
+.signup-text input:valid {
+  outline-color: #85cd19;
+}
+
+@keyframes login-intro {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
