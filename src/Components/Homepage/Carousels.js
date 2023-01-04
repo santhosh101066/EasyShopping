@@ -5,7 +5,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 function Carousels(props) {
   return (
-    <Carousel showThumbs={false} autoPlay infiniteLoop >
+    <Carousel showThumbs={false}  autoPlay infiniteLoop >
       <div className="carosal-container">
         <img src="/assets/images/carosal1.jpeg" alt="carosal" />
       </div>

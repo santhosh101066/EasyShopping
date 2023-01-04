@@ -4,7 +4,7 @@ function Brand(props) {
   return (
     <div className="brand">
       <img src="/assets/logo/logoalone.png" alt="logo"></img>
-      <div className="brand">
+      <div>
         <span>Easy Shopping</span>
         <span>For Electronics</span>
       </div>

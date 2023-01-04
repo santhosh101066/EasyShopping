@@ -1,5 +1,5 @@
 import React from "react";
-import { category } from "../../Assets/ProductData";
+import { category } from "../../Data/ProductData";
 import { useNavigate } from "react-router-dom";
 
 function Category(props) {

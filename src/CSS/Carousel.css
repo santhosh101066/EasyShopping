@@ -3,6 +3,10 @@
   object-fit: cover;
   border-radius: 20px;
 }
+.carosal-container{
+  width: 98%;
+  margin: auto;
+}
 .home-category {
   margin-top: 10px;
   background-color: rgb(43, 46, 74);

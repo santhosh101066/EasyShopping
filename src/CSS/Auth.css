@@ -27,7 +27,12 @@
   width: fit-content;
   margin: auto;
 }
+.brand div{
+  margin-top: 10px;
+}
 .brand img {
+  display: block;
+  margin: auto;
   width: 150px;
   height: 150px;
   border-radius: 50%;

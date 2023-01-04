@@ -8,10 +8,11 @@
   top: 0;
   width: 100%;
   background-color: rgb(43, 46, 74);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.438);
+  /* box-shadow: 0 0 50px rgba(255, 255, 255, 0.294); */
   height: 60px;
   align-items: center;
-  z-index: 1;
+  z-index: 3;
+  border-bottom:1px solid white ;
 }
 .header nav {
   height: 100%;
@@ -25,20 +26,25 @@
   align-items: center;
   list-style: none;
 }
-.header li.app-title:first-child {
+.header li.app-title{
   flex-grow: 1;
   margin: auto;
+
+  user-select: none;
 }
-.header li:not(:first-child) {
-  width: 70px;
+.header li:not(.app-title) {
+  width: 90px;
   height: max-content;
   margin: auto;
-  padding: 20px;
+  display: flex;
+  height: 60px;
+  justify-content: center;
+  align-items: center;
   text-align: center;
   cursor: pointer;
 }
-.header li:not(:first-child):hover ,.category li:hover {
-  background-color:rgb(43, 46, 74);
+.header li:not(.app-title):hover ,.category li:hover {
+  background-color:#2b2e4a;
   background-image: linear-gradient(0deg, rgb(138, 146, 234) 10%, rgba(0, 0, 0, 0));
 }
 .drop-content {
@@ -49,23 +55,27 @@
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
 }
-.category li{
-  width: 70px;
-  height: max-content;
-  margin: auto;
-  padding: 20px;
-  text-align: center;
+.category{
+  height: 100%;
 }
+
 .category:hover .drop-content {
   display: block;
 }
-.app-title img{
+.app-title div.banner img{
   width: 50px;
 height: 50px;
 }
-.app-title{
+.app-title div.banner{
+  width: fit-content;
   display: flex;
   align-items: center;
+  cursor: pointer;
+}
+.app-title div.banner:hover{
+  padding-right: 10px;
+  border: 1px solid white;
+  border-radius: 3px;
 }
 .header-title{
   display: flex;
@@ -92,6 +102,35 @@ height: 50px;
  margin: auto;
  width: fit-content;
 }
+
+.loading{
+  background-color: rgba(0, 0, 0, 0.84);
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 3;
+}
+.loading div{
+ position: fixed;
+ left: 50%;
+ top: 50%;
+ transform: translate(-50%,-50%) rotate(90deg);
+
+
+}
+.loading div img{
+  animation: loading 1s infinite  ease-in-out;;
+}
+@keyframes loading {
+  0%{
+    rotate: 0deg;
+  }
+  100%{
+    rotate: 360deg;
+  }
+}
 @media only screen and (max-width:780px){
   .header{
     height: fit-content;
@@ -117,7 +156,7 @@ height: 50px;
   .category li{
     padding: 20px;
   }
-  .header li:not(:first-child) {
+  .header li:not(.app-title) {
     width: 100%;
     height: max-content;
     margin: auto;
@@ -143,6 +182,11 @@ height: 50px;
     top: 18px;
     transform: scale(1.5);
   }
+  .header div.icon svg{
+   display: block;
+   margin: auto;
+  }
+
   .show-content li:not(.app-title){
     display: block;
   }
