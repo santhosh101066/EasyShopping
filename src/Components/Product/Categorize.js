@@ -10,6 +10,7 @@ function Categorize({ category, products }) {
           products.map((product, index) => (
             <Products
               key={index}
+              id={product.id}
               title={product.title}
               img={product.image}
               price={product.price}

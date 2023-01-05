@@ -46,11 +46,45 @@
    border-radius: 5px;
 }
 
-.product-controls button{ 
+.product-controls .controls{
+  display: flex;
+  flex-flow: column;
+  width: 100%;
+  align-items: center;
+ 
+}
+.product-controls .controls button{ 
     width: 80%;
     font-size: medium;
     height: 40px;
     border-radius: 20px;
     margin: 5px;
     background-color: rgb(119, 221, 119);
+}
+
+.quantity{
+  color: white;
+  padding: auto;
+}
+.quantity .quantity-text{
+  display: block;
+  font-size: large;
+
+ margin:10px ;
+}
+.quantity div{
+  display: flex;
+  justify-content: space-around;
+}
+.quantity div span{
+  flex-grow: 1;
+  text-align: center;
+  font-size: larger;
+  font-weight: 500;
+}
+.quantity h3{
+  text-align: center;
+  font-size: x-large;
+  color: rgb(241, 141, 40);
+  margin: 10px;
 }

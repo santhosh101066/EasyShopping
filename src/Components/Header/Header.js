@@ -10,12 +10,18 @@ function Header() {
   const [login, setLogin] = useState(false);
   const navigate = useNavigate();
   return (
-    <div className={show ? "header show-content" : "header hide-content"}>
+    <header className={show ? "header show-content" : "header hide-content"}>
       <nav>
-        <ul>
+        <ul className="head-ul">
           <li className="app-title">
-            <div className="banner" onClick={() => navigate("/")}>
-              <img src="/assets/logo/logoalone.png" alt="logo"></img>
+            <div
+              className="banner"
+              onClick={() => {
+                navigate("/");
+                setShow((val) => !val);
+              }}
+            >
+              <img src="/assets/logo/logoalone192.png" alt="logo"></img>
               <div className="header-title">
                 <span>Easy Shopping</span>
                 <span>For Electronics</span>
@@ -31,10 +37,26 @@ function Header() {
               <li>Mobile</li>
             </div>
           </div>
-          <li>Wish List</li>
+          <li
+            onClick={() => {
+              navigate("wishlist");
+              setShow((val) => !val);
+            }}
+          >
+            Wish List
+          </li>
           <li>My Cart</li>
-          <li onClick={() => setLogin(true)}>Login</li>
-          <li><FontAwesomeIcon icon={faUserCircle} size='2x'/></li>
+          <li
+            onClick={() => {
+              setLogin(true);
+              setShow((val) => !val);
+            }}
+          >
+            Login
+          </li>
+          <li>
+            <FontAwesomeIcon icon={faUserCircle} size="2x" />
+          </li>
           <div onClick={() => setShow((val) => !val)} className="icon">
             <FontAwesomeIcon icon={faBars} />
           </div>
@@ -43,7 +65,7 @@ function Header() {
       <Suspense fallback={<FullScreenLoader />}>
         {login && <Authenticate setLogin={setLogin} />}
       </Suspense>
-    </div>
+    </header>
   );
 }
 

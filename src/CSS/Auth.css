@@ -141,6 +141,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fit,250px);
   justify-content: space-around;
+  justify-items: center;
 }
 .signup-text input {
   font-size: medium;

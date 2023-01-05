@@ -1,19 +1,18 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { Outlet, useParams } from 'react-router-dom';
 import Categorize from './Categorize';
 import { laptops } from '../../Data/ProductData';
-import DetailedProduct from './DetailedProduct';
 
 
 function ProductPage(props) {
     const getParam=useParams()
     console.log(getParam);
-    return (
-        <div>
-            <DetailedProduct/>
-            <Categorize category={'Laptop'} products={laptops}/>
-        </div>
-    );
+    if(getParam.productId){
+        return <Outlet context={getParam}/>
+    }
+    else{
+        return  <Categorize category={'Laptop'} products={laptops}/>
+    }
 }
 
 export default ProductPage;

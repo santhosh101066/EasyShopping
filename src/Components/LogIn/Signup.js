@@ -1,16 +1,22 @@
-import React, { createRef, useEffect, useState } from "react";
+import React, { createRef, useCallback, useEffect, useState } from "react";
+import AxiosApi from "../../Api/AxiosApi";
+import FullScreenLoader from "../LoadingAnimator/FullScreenLoader";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { notifyUser } from "../../Redux/Reducer/SendNotification";
 
 function Signup({ setSignup }) {
   let [user, setUser] = useState({});
+  let [onUpload, setUpload] = useState(null);
   let [passwordValidate, setValidate] = useState({});
   let formData = createRef();
+  const dispatch = useDispatch();
+
   useEffect(() => {
     if (user.password) {
       if (user.password.length > 0) {
         if (user.password === user.confirmPassword) {
           formData.current.confirmPassword.setCustomValidity("");
-          // formData.current.confirmPassword.style.
         } else {
           formData.current.confirmPassword.setCustomValidity(
             "Password dosen't match"
@@ -20,7 +26,7 @@ function Signup({ setSignup }) {
     }
   }, [user, formData]);
 
-  function handlechanges(e) {
+  const handlechanges = useCallback((e) => {
     const target = e.target;
     if (target.name === "password") {
       const value = target.value;
@@ -79,18 +85,31 @@ function Signup({ setSignup }) {
       return { ...val, [target.name]: target.value };
     });
     target.setCustomValidity("");
-  }
-  function handleSubmit(e) {
-    e.preventDefault();
-    Array.from(formData.current, (val) => {
-      if (val.type !== "submit") {
-        if (val.value.length === 0) {
-          val.setCustomValidity("Reqiured");
+  }, []);
+
+  const handleSubmit = useCallback(
+    (e) => {
+      e.preventDefault();
+      Array.from(formData.current, (val) => {
+        if (val.type !== "submit") {
+          if (val.value.length === 0) {
+            val.setCustomValidity("Reqiured");
+          }
         }
+        return 0;
+      });
+      if (formData.current.checkValidity()) {
+        setUpload(<FullScreenLoader />);
+        AxiosApi.post("user", user).then(() => {
+          setUpload(null);
+          dispatch(notifyUser("Account Created Sucessfully"));
+          setSignup(false);
+        });
       }
-      return 0;
-    });
-  }
+    },
+    [formData, user, dispatch, setSignup]
+  );
+
   return (
     <form ref={formData} onSubmit={handleSubmit}>
       <div className="signup-text">
@@ -188,6 +207,7 @@ function Signup({ setSignup }) {
           to Login.
         </span>
       </div>
+      {onUpload}
     </form>
   );
 }
