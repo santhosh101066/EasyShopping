@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { clearNotification } from "../../Redux/Reducer/SendNotification";
 
 function Notification() {
-    let message=useSelector((state)=>state.Notification.message)
-    let dispatch = useDispatch()
+  let message = useSelector((state) => state.Notification.message);
+  let dispatch = useDispatch();
   let [component, setComponent] = useState(null);
   useEffect(() => {
     if (message) {
@@ -14,9 +14,12 @@ function Notification() {
           <hr />
         </div>
       );
-      setTimeout(()=>{setComponent(null); dispatch(clearNotification())},5000);
+      setTimeout(() => {
+        setComponent(null);
+        dispatch(clearNotification());
+      }, 5000);
     }
-  }, [message,dispatch]);
+  }, [message, dispatch]);
   return component;
 }
 

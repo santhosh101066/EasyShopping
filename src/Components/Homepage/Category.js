@@ -1,11 +1,18 @@
 import React from "react";
-import { category } from "../../Data/ProductData";
 import { useNavigate } from "react-router-dom";
+import { category } from "../../Data/ProductData";
 
 function Category(props) {
-    const navigate=useNavigate()
+  const navigate = useNavigate();
   const displayCategory = category.map((val, index) => (
-    <div role={'button'} tabIndex={1} key={index} onClick={()=>{navigate('/product/'+val.name)}}>
+    <div
+      role={"button"}
+      tabIndex={1}
+      key={index}
+      onClick={() => {
+        navigate("/product/" + val.name);
+      }}
+    >
       <img src={val.icon} alt={val.name}></img>
       <span>{val.name}</span>
     </div>

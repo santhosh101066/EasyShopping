@@ -1,14 +1,16 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { Suspense, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { faBars, faUserCircle } from "@fortawesome/free-solid-svg-icons";
 import FullScreenLoader from "../LoadingAnimator/FullScreenLoader";
+import { faBars, faUserCircle } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Authenticate = React.lazy(() => import("../LogIn/Authenticate"));
+
 function Header() {
   const [show, setShow] = useState(false);
   const [login, setLogin] = useState(false);
   const navigate = useNavigate();
+
   return (
     <header className={show ? "header show-content" : "header hide-content"}>
       <nav>
@@ -45,7 +47,14 @@ function Header() {
           >
             Wish List
           </li>
-          <li>My Cart</li>
+          <li
+            onClick={() => {
+              navigate("cart");
+              setShow((val) => !val);
+            }}
+          >
+            My Cart
+          </li>
           <li
             onClick={() => {
               setLogin(true);

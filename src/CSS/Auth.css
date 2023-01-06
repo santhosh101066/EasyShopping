@@ -4,7 +4,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(255, 255, 255, 0.33);
+  backdrop-filter: blur(5px);
   z-index: 2;
   animation: login-intro 0.25s normal 1 ease-out;
 }
@@ -22,6 +22,7 @@
   color: white;
   padding: 10px;
   overflow: auto;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.292) ;
 }
 .brand {
   width: fit-content;
@@ -107,7 +108,7 @@
   margin: auto;
 }
 .login-text span a:visited {
-  color: blue;
+  color: #b0b0ff;
 }
 .login img {
   animation: rotate 10s infinite linear;
@@ -199,7 +200,7 @@
   margin: auto;
 }
 .signup-text span a:visited {
-  color: blue;
+  color: #b0b0ff;
 }
 .signup-text input:invalid {
   outline: 2px solid rgb(241, 124, 124);

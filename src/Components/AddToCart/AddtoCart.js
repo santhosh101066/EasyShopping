@@ -1,24 +1,26 @@
 import React from "react";
 import CartBlock from "../Cart/CartBlock";
-import "../../CSS/Cart.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
+import Subtotal from "../Cart/Subtotal";
 
-function Wishlist(props) {
+function AddtoCart(props) {
   return (
     <div className="wish-list">
       <h1>
-        Your Wish List  <FontAwesomeIcon color="#ff007b" icon={faHeart} />
+        Shopping Cart <FontAwesomeIcon color="#fff178" icon={faShoppingCart} />
       </h1>
-      <hr />
+      <hr/>
       <CartBlock />
       <CartBlock />
       <CartBlock />
       <CartBlock />
       <CartBlock />
       <CartBlock />
+      <CartBlock />
+      <Subtotal/>
     </div>
   );
 }
 
-export default Wishlist;
+export default AddtoCart;

@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import "../../CSS/Auth.css";
 import Login from "./Login";
 import Brand from "./Brand";
 import Signup from "./Signup";
+import "../../CSS/Auth.css";
+
 function Authenticate({ setLogin }) {
   let [signup, setSignup] = useState(false);
   return (
