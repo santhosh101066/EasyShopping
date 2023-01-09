@@ -3,10 +3,11 @@
   margin: 15px;
   padding: 15px;
   border: 1px solid gainsboro;
-  background-color: white;
-  border-radius: 5px;
+  background-color: #ffffff;
+  border-radius: 15px;
+  
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.318);
-  transition: background-color 0.25s ease-out;
+  transition: background-color 0.25s ease-out ,transform 0.25s ease-out;
 }
 .each-product img {
   display: block;
@@ -29,11 +30,13 @@
   font-weight: 500;
   text-align: center;
   margin-top: 5px;
-  color: brown;
+  /* color: brown; */
+  color: rgb(255, 55, 55);
   text-overflow: ellipsis;
 }
 .each-product:hover {
-  background-color: rgb(224, 219, 255);
+  /* background-color: rgb(224, 219, 255); */
+  transform: scale(1.1);
 }
 
 .home-container {

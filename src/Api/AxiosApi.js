@@ -1,3 +1,10 @@
 import axios from "axios";
 
-export default axios.create({baseURL:'https://santhosh101066-zany-space-invention-59x65v96grq347w6-4000.preview.app.github.dev'})
+const DB = process.env.REACT_APP_DB;
+export default axios.create({
+  baseURL: DB,
+  headers: {
+    Authorization:
+      localStorage.getItem("auth") && `Bearer ${localStorage.getItem("auth")}`,
+  },
+});

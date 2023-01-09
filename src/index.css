@@ -5,17 +5,20 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #2b2e4a;
-  background-image: linear-gradient(60deg, #2b2e4a 0%, #6a70b3 100%);
+  /* background-color: #2b2e4a;
+  background-image: linear-gradient(60deg, #2b2e4a 0%, #6a70b3 100%); */
+  /* background-color:   #e4e4ed; */
+  /* background-color: #FFBCD1; */
+ background-color: #ffbcd133;
+  
+
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-h2 {
-  color: white;
-}
+
 html{
   min-height: -webkit-fill-available;
   min-height: -moz-available;

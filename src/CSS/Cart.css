@@ -1,86 +1,85 @@
-.cart-block{
-    display: flex;
-    color: white;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    border-bottom: 1px solid white;
+.cart-block {
+  display: flex;
+  color: rgb(0, 0, 0);
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1.5px solid rgb(0, 0, 0);
 }
-.cart-block img{
-    max-width: 100px;
-    height: 100px;
-    object-fit: contain;
-    border-radius: 2px;
+.cart-block img {
+  max-width: 100px;
+  height: 100px;
+  object-fit: contain;
+  border-radius: 2px;
 }
-.cart-block span{
-    padding-left:20px ;
-    padding-right: 20px;
+.cart-block span {
+  padding-left: 20px;
+  padding-right: 20px;
 }
-.cart-block .title{
-    text-align: justify;
+.cart-block .title {
+  text-align: justify;
 }
-.cart-info{
-    display: flex; 
+.cart-info {
+  display: flex;
 }
-.cart-control{
-    display: flex;
-    justify-content: space-around;
+.cart-control {
+  display: flex;
+  justify-content: space-around;
 }
-.cart-control button{
-    width: max-content;
-    border-radius: 5px;
-    height: 30px;
-    color: rgb(255, 125, 125);
-    background-color: rgba(0, 0, 0, 0);
-    border: 2px rgba(255, 255, 255, 0.334) solid;
-    transition: background-color .25s ease-out;
-}
-
-.cart-control button:hover{
-    background-color: white;
-}
-.cart-control button:active{
-    background-color: rgba(255, 255, 255, 0.658);
+.cart-control button {
+  width: max-content;
+  border-radius: 5px;
+  height: 30px;
+  color: rgb(255, 67, 67);
+  background-color: rgba(0, 0, 0, 0);
+  border: 2px rgba(49, 15, 129, 0.334) solid;
+  transition: background-color 0.25s ease-out;
 }
 
-
-.wish-list{
-    color: rgb(250, 250, 250)
+.cart-control button:hover {
+  background-color: rgb(117, 72, 199);
 }
-.wish-list h1{
-    margin: 0% ;
-    padding-top: 5px;
-    text-shadow: 0 1px 5px rgba(255, 255, 255, 0.257);
+.cart-control button:active {
+  background-color: rgba(255, 255, 255, 0.658);
 }
 
-.subtotal{
-    margin-top: 5px;
-    display: flex;
-    justify-content: flex-end;
-    padding: 10px;
+.wish-list {
+  color: rgb(61 50 178);
 }
-.subtotal .info span{
+.wish-list h1 {
+  margin: 0%;
+  padding-top: 5px;
+  text-shadow: 0 1px 5px rgba(20, 39, 93, 0.257);
+}
+
+.subtotal {
+  margin-top: 5px;
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px;
+}
+.subtotal .info span {
+  display: block;
+}
+.subtotal .info button {
+  margin-top: 5px;
+  background-color: rgb(255, 255, 138);
+  height: 40px;
+  border-radius: 20px;
+  width: 100%;
+  border: none;
+}
+.subtotal .info button:hover {
+  background-color: rgb(205, 205, 0);
+}
+.subtotal .info button:active {
+  background-color: rgb(255, 255, 0);
+}
+@media only screen and (max-width: 780px) {
+  .cart-block {
     display: block;
-}
-.subtotal .info button{
-    margin-top: 5px;
-    background-color: rgb(255, 255, 138);
-    height: 40px;
-    border-radius: 20px;
-    width: 100%;
-    border:none;
-}
-.subtotal .info button:hover{
-    background-color: rgb(205, 205, 0);
-}
-.subtotal .info button:active{
-    background-color: rgb(255, 255, 0);
-}
-@media only screen and (max-width:780px){
-    .cart-block{
-        display: block;
-    }
-    .cart-control{
-        margin: 10px;
-    }
+  }
+  .cart-control {
+    margin: 10px;
+  }
 }

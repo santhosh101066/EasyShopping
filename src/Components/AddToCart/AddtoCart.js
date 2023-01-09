@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import CartBlock from "../Cart/CartBlock";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import Subtotal from "../Cart/Subtotal";
 
 function AddtoCart(props) {
+  useEffect(()=>{
+    window.scrollTo(0,0)
+},[])
   return (
     <div className="wish-list">
       <h1>

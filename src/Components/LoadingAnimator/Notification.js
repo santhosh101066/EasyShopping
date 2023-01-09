@@ -3,13 +3,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { clearNotification } from "../../Redux/Reducer/SendNotification";
 
 function Notification() {
-  let message = useSelector((state) => state.Notification.message);
+  let { message, color } = useSelector((state) => state.Notification);
   let dispatch = useDispatch();
   let [component, setComponent] = useState(null);
   useEffect(() => {
     if (message) {
       setComponent(
-        <div className="notification">
+        <div style={{ color }} className="notification">
           <span>{message}</span>
           <hr />
         </div>
@@ -19,7 +19,7 @@ function Notification() {
         dispatch(clearNotification());
       }, 5000);
     }
-  }, [message, dispatch]);
+  }, [message, color, dispatch]);
   return component;
 }
 

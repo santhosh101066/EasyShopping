@@ -3,7 +3,10 @@ import AxiosApi from "../../Api/AxiosApi";
 import FullScreenLoader from "../LoadingAnimator/FullScreenLoader";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { notifyUser } from "../../Redux/Reducer/SendNotification";
+import {
+  notifyUser,
+  notifyUserError,
+} from "../../Redux/Reducer/SendNotification";
 
 function Signup({ setSignup }) {
   let [user, setUser] = useState({});
@@ -87,28 +90,33 @@ function Signup({ setSignup }) {
     target.setCustomValidity("");
   }, []);
 
-  const handleSubmit = useCallback(
-    (e) => {
-      e.preventDefault();
-      Array.from(formData.current, (val) => {
-        if (val.type !== "submit") {
-          if (val.value.length === 0) {
-            val.setCustomValidity("Reqiured");
-          }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    Array.from(formData.current, (val) => {
+      if (val.type !== "submit") {
+        if (val.value.length === 0) {
+          val.setCustomValidity("Required");
         }
-        return 0;
-      });
-      if (formData.current.checkValidity()) {
-        setUpload(<FullScreenLoader />);
-        AxiosApi.post("user", user).then(() => {
+      }
+      return 0;
+    });
+    if (formData.current.checkValidity()) {
+      setUpload(<FullScreenLoader />);
+      const sendData = user;
+      delete sendData.confirmPassword;
+      AxiosApi.post("user", sendData)
+        .then(() => {
           setUpload(null);
           dispatch(notifyUser("Account Created Sucessfully"));
           setSignup(false);
+        })
+        .catch((err) => {
+          setUpload(null);
+          console.log(err);
+          dispatch(notifyUserError(err.response.statusText));
         });
-      }
-    },
-    [formData, user, dispatch, setSignup]
-  );
+    }
+  };
 
   return (
     <form ref={formData} onSubmit={handleSubmit}>

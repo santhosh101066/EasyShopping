@@ -9,7 +9,7 @@
   animation: login-intro 0.25s normal 1 ease-out;
 }
 .login {
-  background-color: rgb(43, 46, 74);
+  background-color:#101549;
   width: 600px;
   display: block;
   position: absolute;

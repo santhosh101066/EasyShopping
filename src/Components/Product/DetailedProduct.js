@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faAdd,
@@ -10,31 +10,32 @@ import {
 import "../../CSS/DetailedView.css";
 
 function DetailedProduct(props) {
+  let [image, setImage] = useState("/assets/images/m1.jpg");
+  const handleClickImage = useCallback((e) => {
+    setImage(e.target.src);
+  }, []);
+
   return (
     <div className="detailed-product">
       <div className="thumb-images">
-        <div className="thumbs">
+        <div className="thumbs" onClick={handleClickImage}>
           {/* thumb img */}
-          <div>
-            <img src="/assets/images/m1.jpg" alt="" />
-          </div>
-          <div>
-            <img src="/assets/images/m2.jpg" alt="" />
-          </div>
-          <div>
-            <img src="/assets/images/p1.jpg" alt="" />
-          </div>
-          <div>
-            <img src="/assets/images/p2.jpg" alt="" />
-          </div>
-          <div>
-            <img src="/assets/images/m1.jpg" alt="" />
-          </div>
+
+          <img src="/assets/images/m1.jpg" alt="" />
+
+          <img src="/assets/images/m2.jpg" alt="" />
+
+          <img src="/assets/images/p1.jpg" alt="" />
+
+          <img src="/assets/images/p2.jpg" alt="" />
+
+          <img src="/assets/images/m1.jpg" alt="" />
         </div>
       </div>
+
       <div className="product-image">
         {/* Product img */}
-        <img src="/assets/images/m1.jpg" alt="" />
+        <img src={image} alt="" />
       </div>
       <div className="product-details">
         <h2>
@@ -68,11 +69,11 @@ function DetailedProduct(props) {
           <span className="quantity-text">Quantity</span>
           <div>
             <button>
-              <FontAwesomeIcon icon={faPlus} />
+              <FontAwesomeIcon icon={faMinus} />
             </button>
             <span>1</span>
             <button>
-              <FontAwesomeIcon icon={faMinus} />
+              <FontAwesomeIcon icon={faPlus} />
             </button>
           </div>
           <h3>₹6,499</h3>

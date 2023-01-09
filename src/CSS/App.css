@@ -1,5 +1,5 @@
 .App {
-  margin-top: 65px;
+  margin-top: 85px;
 }
 .header {
   color: white;
@@ -7,12 +7,13 @@
   left: 0;
   top: 0;
   width: 100%;
-  background-color: #2b2e4a;
-  /* box-shadow: 0 0 50px rgba(255, 255, 255, 0.294); */
+  /* background-color:  rgb(25, 14, 95);  */
+  background-color: #554994;
+  box-shadow: 0 0 50px rgba(255, 0, 247, 0.409);
   height: 60px;
   align-items: center;
   z-index: 3;
-  border-bottom:1px solid white ;
+  /* border-bottom:1px solid white ; */
 }
 .header nav {
   height: 100%;
@@ -44,13 +45,13 @@
   cursor: pointer;
 }
 .header .head-ul li:not(.app-title):hover ,.category li:hover {
-  background-color:#2b2e4a;
+  background-color:#554994;
   background-image: linear-gradient(0deg, rgb(138, 146, 234) 10%, rgba(0, 0, 0, 0));
 }
 .drop-content {
   display: none;
   position: absolute;
-  background-color: rgb(43, 46, 74);
+  background-color: #8e7fcf;
   text-align: center;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
@@ -59,7 +60,7 @@
   height: 100%;
 }
 
-.category:hover .drop-content {
+.category:hover .drop-content{
   display: block;
 }
 .app-title div.banner img{
@@ -139,7 +140,7 @@ height: 50px;
   color: white;
   padding-left: 3px;
   padding-right:3px;
-  background-color: rgb(21, 23, 36);
+  background-color:#08002e;
   width: fit-content;
   display: flex;
   min-width: 100px;
@@ -201,11 +202,9 @@ height: 50px;
     padding-inline-start: 0px;
     align-items: center;
     list-style: none;
-    background-color: rgb(43, 46, 74);
   }
   .header .head-ul li{
     width: 100%;
-    background-color: rgb(43, 46, 74);
   }
   .category{
     text-align: center;
@@ -213,6 +212,9 @@ height: 50px;
   }
   .category li{
     padding: 20px;
+  }
+  .drop-content{
+    position: relative;
   }
   .header .head-ul li:not(.app-title) {
     width: 100%;

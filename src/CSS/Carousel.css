@@ -9,7 +9,9 @@
 }
 .home-category {
   margin-top: 10px;
-  background-color: rgb(43, 46, 74);
+  /* background-color:#101549; */
+  /* background-color: #F29393; */
+  background-color: #A267AC;
   color: white;
   display: grid;
   grid-template-columns: 1fr 1fr;

@@ -2,21 +2,25 @@
   height: 100%;
   display: flex;
 }
-.thumbs div {
-  margin: 5px;
-  background-color: white;
-  border-radius: 2px;
+.thumbs {
+  display: flex;
+  flex-direction: column;
 }
 .thumbs img {
+  margin: 2px;
   width: 50px;
   height: 60px;
   object-fit: contain;
+  background-color: rgb(255, 255, 255);
 }
 .thumb-images {
   margin: 0.5%;
   margin-top: 0.5%;
   margin-bottom: 0.5%;
   width: fit-content;
+}
+.thumbs img:hover {
+  box-shadow: 0 0 10px #e100ff;
 }
 .product-image img {
   width: 100%;
@@ -32,15 +36,15 @@
   background-color: white;
 }
 .product-details {
-  color: white;
+  color: rgb(0, 0, 0);
 }
 .product-controls {
   display: flex;
   flex-flow: column;
-  width: 300px;
+  min-width: 200px;
   height: 80%;
   margin: 3px;
-  border: 3px rgba(255, 255, 255, 0.318) solid;
+  border: 3px #d0ace3 solid;
   align-items: center;
   align-self: center;
   border-radius: 5px;
@@ -53,18 +57,27 @@
   align-items: center;
 }
 .product-controls .controls button {
-  color: white;
+  color: rgb(255, 255, 255);
   width: 80%;
   font-size: medium;
   height: 40px;
   border-radius: 20px;
   margin: 5px;
-  background: rgba(255, 255, 255, 0);
-  border: 2px rgba(255, 255, 255, 0.552) solid;
+  /* background: #F675A8; */
+  background: rgb(246, 117, 168);
+  background: linear-gradient(
+    90deg,
+    rgba(246, 117, 168, 1) 30%,
+    rgba(242, 147, 147, 1) 50%,
+    rgba(246, 117, 168, 1) 70%
+  );
+  border: 2px rgb(255, 255, 255) solid;
+  background-size: 200% auto;
+  transition: background-position 0.1s ease-out;
 }
 .product-controls .controls button:hover {
-  background: rgb(60, 192, 62);
-  background-image: linear-gradient(180deg, #ff000000 50%, #0000005c 100%);
+  /* background: #F675A8; */
+  background-position: right center;
 }
 .product-controls .controls button:active {
   background: rgb(97, 185, 99);
@@ -72,13 +85,27 @@
 }
 
 .quantity {
-  color: white;
+  color: rgb(0, 0, 0);
   padding: auto;
+}
+
+.quantity button {
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+  background-color: white;
+  border:2px #cc3dff solid ;
+  align-content: center;
+}
+.quantity button:hover{
+  transform: scale(1.1);
+}
+.quantity button:active{
+  background-color:#efc2ff ;
 }
 .quantity .quantity-text {
   display: block;
   font-size: large;
-
   margin: 10px;
 }
 .quantity div {
@@ -94,6 +121,6 @@
 .quantity h3 {
   text-align: center;
   font-size: x-large;
-  color: rgb(241, 141, 40);
+  color: black;
   margin: 10px;
 }
