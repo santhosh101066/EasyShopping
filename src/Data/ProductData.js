@@ -65,9 +65,9 @@ export const mobile = [
 ];
 
 export const category = [
-  { name: "Laptop", icon: "/assets/images/laptopicon.png" },
-  { name: "Mobile", icon: "/assets/images/mobileicon.png" },
-  { name: "Tv", icon: "/assets/images/tvicon.png" },
-  { name: "Headphones", icon: "/assets/images/headphonesicon.png" },
+  { name: "Laptops" ,id:'laptop', icon: "/assets/images/laptopicon.png" },
+  { name: "Mobiles", id:'mobile',icon: "/assets/images/mobileicon.png" },
+  { name: "Televisions",id:'television', icon: "/assets/images/tvicon.png" },
+  { name: "Headphones",id:'headphone', icon: "/assets/images/headphonesicon.png" },
 ];
 

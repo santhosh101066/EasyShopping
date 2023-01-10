@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useContext, useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faAdd,
@@ -8,12 +8,20 @@ import {
   faPlus,
 } from "@fortawesome/free-solid-svg-icons";
 import "../../CSS/DetailedView.css";
+import AxiosApi from "../../Api/AxiosApi";
+
 
 function DetailedProduct(props) {
   let [image, setImage] = useState("/assets/images/m1.jpg");
   const handleClickImage = useCallback((e) => {
     setImage(e.target.src);
   }, []);
+  //const context=useContext()
+
+  useEffect(()=>{
+    // console.log(context);
+    // AxiosApi.get('product/detailed/'+context.id)
+  })
 
   return (
     <div className="detailed-product">

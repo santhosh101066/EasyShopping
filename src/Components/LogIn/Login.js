@@ -33,9 +33,13 @@ function Login({ setSignup }) {
           })
           .catch((err) => {
             setLoad(null);
-            setInvalid(true);
+            if(err.response){
+              setInvalid(true)
+              dispatch(notifyUserError(err.response.statusText));
+              return
+            }
             console.log(err);
-            dispatch(notifyUserError(err.response.statusText));
+            dispatch(notifyUserError(err.message));   
           });
 
         // AxiosApi.get(

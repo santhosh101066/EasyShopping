@@ -10,7 +10,7 @@ function Category(props) {
       tabIndex={1}
       key={index}
       onClick={() => {
-        navigate("/product/" + val.name);
+        navigate("/products/" + val.id);
       }}
     >
       <img src={val.icon} alt={val.name}></img>

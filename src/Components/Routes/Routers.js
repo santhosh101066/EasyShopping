@@ -6,12 +6,13 @@ import DetailedProduct from '../Product/DetailedProduct';
 import ProtectedRoute from '../../ProtectedRoute/ProtectedRoute';
 import Wishlist from '../WishList/Wishlist';
 import AddtoCart from '../AddToCart/AddtoCart';
+import AddProduct from '../AddProduct/AddProduct';
 
 function Routers(props) {
     return (
         <Routes>
           <Route index element={<Homepage />}></Route>
-          <Route path="product/:type" element={<ProductPage />}>
+          <Route path="products/:type" element={<ProductPage />}>
             <Route path=":productId" element={<DetailedProduct />}></Route>
           </Route>
           <Route
@@ -30,6 +31,7 @@ function Routers(props) {
               </ProtectedRoute>
             }
           />
+          <Route path='addproduct' element={<AddProduct/>}/>
           <Route path="*" element={<div>Not Found</div>} />
         </Routes>
     );

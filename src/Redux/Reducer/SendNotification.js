@@ -15,7 +15,8 @@ export const sendNotification = createSlice({
       state.color='#e86056'
     },
     clear(state) {
-      state={ message: null,color:'white' } ;
+      state.message= null
+      state.color='white' ;
     },
   },
 });

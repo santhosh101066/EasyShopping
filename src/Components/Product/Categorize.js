@@ -12,7 +12,6 @@ function Categorize({ category, products }) {
               key={index}
               id={product.id}
               title={product.title}
-              img={product.image}
               price={product.price}
             />
           ))}
