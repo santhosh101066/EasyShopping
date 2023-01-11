@@ -12,9 +12,8 @@ function Routers(props) {
     return (
         <Routes>
           <Route index element={<Homepage />}></Route>
-          <Route path="products/:type" element={<ProductPage />}>
-            <Route path=":productId" element={<DetailedProduct />}></Route>
-          </Route>
+          <Route path="products/:type" element={<ProductPage />}></Route>
+          <Route path="view/:productId" element={<DetailedProduct />}></Route>
           <Route
             path="wishlist"
             element={

@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faAdd,
@@ -9,35 +9,67 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import "../../CSS/DetailedView.css";
 import AxiosApi from "../../Api/AxiosApi";
-
+import { useParams } from "react-router-dom";
+import PriceFormat from "../StringFormat/PriceFormat";
+import PageError from "../Alert.js/PageError";
+import FullScreenLoader from "../LoadingAnimator/FullScreenLoader";
+import { useDispatch } from "react-redux";
+import { notifyUserError } from "../../Redux/Reducer/SendNotification";
 
 function DetailedProduct(props) {
-  let [image, setImage] = useState("/assets/images/m1.jpg");
+  const db = process.env.REACT_APP_DB;
+  let [image, setImage] = useState();
+  let [datas, setDatas] = useState(null);
+  let [images, setImages] = useState([]);
+  let [quantity, setQuantity] = useState(1);
+  let [error, setError] = useState();
+  const param = useParams();
+  const dispatch = useDispatch()
+
   const handleClickImage = useCallback((e) => {
     setImage(e.target.src);
   }, []);
-  //const context=useContext()
 
-  useEffect(()=>{
-    // console.log(context);
-    // AxiosApi.get('product/detailed/'+context.id)
-  })
+  const loadContent = useCallback(() => {
+    AxiosApi.get("product/detailed/" + param.productId)
+      .then((res) => {
+        const data = res.data;
+        console.log(data);
+        setImage(`${db}/assets/images/${data.id}.png`);
+        setImages(() => {
+          const img = [];
+          for (let index = 0; index < data.filesCount; index++) {
+            img.push(
+              <img
+                key={index}
+                src={`${db}/assets/images/${data.id}_${index}_.png`}
+                alt=""
+              />
+            );
+          }
+          return img;
+        });
+        // setQuantity(Number(data.quantity))
+        setDatas(data);
+        setError(null);
+      })
+      .catch((err) => {
+        setError(err.message);
+        dispatch(notifyUserError(err.message))
+      });
+  }, [db, dispatch, param.productId]);
 
-  return (
+  useEffect(() => {
+    loadContent();
+  }, [loadContent]);
+
+  return datas ? (
     <div className="detailed-product">
       <div className="thumb-images">
         <div className="thumbs" onClick={handleClickImage}>
           {/* thumb img */}
-
-          <img src="/assets/images/m1.jpg" alt="" />
-
-          <img src="/assets/images/m2.jpg" alt="" />
-
-          <img src="/assets/images/p1.jpg" alt="" />
-
-          <img src="/assets/images/p2.jpg" alt="" />
-
-          <img src="/assets/images/m1.jpg" alt="" />
+          <img src={`${db}/assets/images/${datas.id}.png`} alt="" />
+          {images}
         </div>
       </div>
 
@@ -46,45 +78,37 @@ function DetailedProduct(props) {
         <img src={image} alt="" />
       </div>
       <div className="product-details">
-        <h2>
-          Redmi 9A Sport (Coral Green, 2GB RAM, 32GB Storage) | 2GHz Octa-core
-          Helio G25 Processor | 5000 mAh Battery
-        </h2>
+        <h2>{datas.title}</h2>
         <h4>More details</h4>
         <ul>
-          <li>
-            Processor: MediaTek Helio G25 Octa-core; Up to 2.0GHz clock speed
-          </li>
-          <li>Camera: 13 MP Rear camera with AI portrait| 5 MP front camera</li>
-          <li>
-            Display: 16.58 centimeters (6.53-inch) HD+ display with 720x1600
-            pixels and 20:9 aspect ratio
-          </li>
-          <li>Battery: 5000 mAH large battery with 10W wired charger in-box</li>
-          <li>
-            Memory, Storage & SIM: 2GB RAM | 32GB storage | Dual SIM (nano+nano)
-            + Dedicated SD card slot
-          </li>
-          <li>
-            The Selfie camera allows easy and convenient access to your phone
-            with AI face unlock
-          </li>
-          <li>Form factor:Bar,Operating system:MIUI 12</li>
+          {datas.more_details.split("\n").map((val) => val && <li>{val}</li>)}
         </ul>
       </div>
       <div className="product-controls">
         <div className="quantity">
           <span className="quantity-text">Quantity</span>
           <div>
-            <button>
+            <button
+              onClick={() => {
+                quantity > 1 && setQuantity(quantity - 1);
+              }}
+              disabled={quantity === 1 ? true : false}
+            >
               <FontAwesomeIcon icon={faMinus} />
             </button>
-            <span>1</span>
-            <button>
+            <span>{quantity}</span>
+            <button
+              onClick={() => {
+                quantity < Number(datas.quantity) && setQuantity(quantity + 1);
+              }}
+              disabled={quantity === Number(datas.quantity) ? true : false}
+            >
               <FontAwesomeIcon icon={faPlus} />
             </button>
           </div>
-          <h3>₹6,499</h3>
+          <h3>
+            <PriceFormat price={Number(datas.price) * quantity} />
+          </h3>
         </div>
         <div className="controls">
           <button>
@@ -99,6 +123,10 @@ function DetailedProduct(props) {
         </div>
       </div>
     </div>
+  ) : error ? (
+    <PageError error={error} loadData={loadContent} />
+  ) : (
+    <FullScreenLoader />
   );
 }
 

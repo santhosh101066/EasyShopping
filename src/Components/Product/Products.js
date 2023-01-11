@@ -10,7 +10,7 @@ function Products({id,title,price}) {
         window.scrollTo(0,0)
     },[])
     return (
-        <div className='each-product' onClick={()=>navigate(String(id))}>
+        <div className='each-product' onClick={()=>navigate("/view/"+id)}>
             <img src={process.env.REACT_APP_DB+"/assets/images/"+id+".png"} alt={title}/>
             <span className='p-title'>{title}</span>
             <span className='p-price'><PriceFormat price={price}/></span>

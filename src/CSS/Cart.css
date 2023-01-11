@@ -4,7 +4,14 @@
   justify-content: space-between;
   align-items: center;
   padding: 10px;
-  border-bottom: 1.5px solid rgb(0, 0, 0);
+  background-color: white;
+  margin: 15px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(224, 112, 149, 0.606);
+  transition: scale .25s ease-in;
+}
+.cart-block:hover{
+  scale: 1.01;
 }
 .cart-block img {
   max-width: 100px;

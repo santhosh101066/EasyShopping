@@ -2,7 +2,7 @@ import React from "react";
 import Carousels from "./Carousels";
 import Category from "./Category";
 
-function Homepage(props) {
+function Homepage() {
   return (
     <div>
       <Carousels />

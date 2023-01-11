@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
-import CartBlock from "../Cart/CartBlock";
 import "../../CSS/Cart.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import WishCard from "./WishCard";
 
 function Wishlist(props) {
   useEffect(()=>{
@@ -14,12 +14,12 @@ function Wishlist(props) {
         Your Wish List  <FontAwesomeIcon color="#ff007b" icon={faHeart} />
       </h1>
       <hr />
-      <CartBlock />
-      <CartBlock />
-      <CartBlock />
-      <CartBlock />
-      <CartBlock />
-      <CartBlock />
+      <WishCard/>
+      <WishCard/>
+      <WishCard/>
+      <WishCard/>
+      <WishCard/>
+      <WishCard/>
     </div>
   );
 }

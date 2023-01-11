@@ -5,6 +5,6 @@ export default axios.create({
   baseURL: DB,
   headers: {
     Authorization:
-      localStorage.getItem("auth") && `Bearer ${localStorage.getItem("auth")}`,
+      localStorage.getItem("auth") && `Bearer ${localStorage.getItem("auth")}`
   },
 });

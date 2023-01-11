@@ -87,6 +87,7 @@
 .quantity {
   color: rgb(0, 0, 0);
   padding: auto;
+  width: 100%;
 }
 
 .quantity button {
@@ -103,6 +104,9 @@
 .quantity button:active{
   background-color:#efc2ff ;
 }
+.quantity button:disabled{
+  border-color: gray;
+}
 .quantity .quantity-text {
   display: block;
   font-size: large;
@@ -112,8 +116,10 @@
   display: flex;
   justify-content: space-around;
 }
+.quantity span{
+  text-align: center;
+}
 .quantity div span {
-  flex-grow: 1;
   text-align: center;
   font-size: larger;
   font-weight: 500;
