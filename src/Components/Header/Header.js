@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { removeUserLogin } from "../../Redux/Reducer/AuthKey";
 import { notifyUser } from "../../Redux/Reducer/SendNotification";
 import { setLogin } from "../../Redux/Reducer/LoginBtn";
+import { category } from "../../Data/ProductData";
 
 const Authenticate = React.lazy(() => import("../LogIn/Authenticate"));
 
@@ -70,8 +71,9 @@ function Header() {
               }
               className="drop-content"
             >
-              <li>Laptop</li>
-              <li>Mobile</li>
+              {/* <li>Laptop</li>
+              <li>Mobile</li> */}
+              {category.map(val=><li key={val.id} onClick={()=>navigate('products/'+val.id)}>{val.name}</li>)}
             </div>
           </div>
           {isLogin ? (

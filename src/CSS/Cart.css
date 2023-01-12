@@ -33,6 +33,9 @@
   display: flex;
   justify-content: space-around;
 }
+.cart-control span{
+  width: max-content;
+}
 .cart-control button {
   width: max-content;
   border-radius: 5px;

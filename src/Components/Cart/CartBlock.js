@@ -1,22 +1,35 @@
 import React from "react";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import PriceFormat from "../StringFormat/PriceFormat";
+import { useNavigate } from "react-router-dom";
 
-function CartBlock(props) {
+function CartBlock({ title, price, quantity = 1, id, removeFromCart }) {
+  const db = process.env.REACT_APP_DB;
+  const navigate = useNavigate();
   return (
-    <div className="cart-block">
+    <div
+      className="cart-block"
+      onClick={() => {
+        navigate("/view/" + id);
+      }}
+    >
       <div className="cart-info">
-        <img src="/assets/images/m1.jpg" alt="Product" />
-        <span className="title">
-          OnePlus Nord CE 2 Lite 5G (Blue Tide, 6GB RAM, 128GB Storage)OnePlus
-          Nord CE 2 Lite 5G (Blue Tide, 6GB RAM, 128GB Storage)
-        </span>
+        <img src={`${db}/assets/images/${id}.png`} alt="Product" />
+        <span className="title">{title}</span>
       </div>
       <div className="cart-control">
-        <span>Quantity 1</span>
-        <span>Price</span>
+        <span>Quantity {quantity}</span>
         <span>
-          <button>
+          Price : <PriceFormat price={Number(price) * quantity} />
+        </span>
+        <span>
+          <button
+            onClick={(e) => {
+              removeFromCart(id);
+              e.stopPropagation();
+            }}
+          >
             <FontAwesomeIcon icon={faTrash} />
           </button>
         </span>

@@ -7,7 +7,6 @@ function Category(props) {
   const displayCategory = category.map((val, index) => (
     <div
       role={"button"}
-      tabIndex={1}
       key={index}
       onClick={() => {
         navigate("/products/" + val.id);

@@ -34,8 +34,9 @@
   user-select: none;
 }
 .header .head-ul li:not(.app-title) {
-  width: 90px;
+  width:max-content;
   height: max-content;
+  min-width: 90px;
   margin: auto;
   display: flex;
   height: 60px;
@@ -58,6 +59,7 @@
 }
 .category{
   height: 100%;
+  width: max-content;
 }
 
 .category:hover .drop-content{
@@ -158,7 +160,7 @@ height: 50px;
   display: flex;
   margin: 0%;
   background-color: rgb(93, 215, 89);
-  animation: notify 5s  infinite  forwards ease-out;
+  animation: notify 5s  1  forwards ease-out;
   height: 3px;
   align-content: flex-start;
   align-self: flex-start;

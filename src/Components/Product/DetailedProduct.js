@@ -1,27 +1,19 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faAdd,
-  faCartShopping,
-  faHeart,
-  faMinus,
-  faPlus,
-} from "@fortawesome/free-solid-svg-icons";
 import "../../CSS/DetailedView.css";
 import AxiosApi from "../../Api/AxiosApi";
 import { useParams } from "react-router-dom";
-import PriceFormat from "../StringFormat/PriceFormat";
 import PageError from "../Alert.js/PageError";
 import FullScreenLoader from "../LoadingAnimator/FullScreenLoader";
 import { useDispatch } from "react-redux";
 import { notifyUserError } from "../../Redux/Reducer/SendNotification";
+import Controls from "./Controls";
 
 function DetailedProduct(props) {
   const db = process.env.REACT_APP_DB;
   let [image, setImage] = useState();
   let [datas, setDatas] = useState(null);
   let [images, setImages] = useState([]);
-  let [quantity, setQuantity] = useState(1);
+  
   let [error, setError] = useState();
   const param = useParams();
   const dispatch = useDispatch()
@@ -34,7 +26,6 @@ function DetailedProduct(props) {
     AxiosApi.get("product/detailed/" + param.productId)
       .then((res) => {
         const data = res.data;
-        console.log(data);
         setImage(`${db}/assets/images/${data.id}.png`);
         setImages(() => {
           const img = [];
@@ -81,47 +72,10 @@ function DetailedProduct(props) {
         <h2>{datas.title}</h2>
         <h4>More details</h4>
         <ul>
-          {datas.more_details.split("\n").map((val) => val && <li>{val}</li>)}
+          {datas.more_details.split("\n").map((val,index) => val && <li key={index}>{val}</li>)}
         </ul>
       </div>
-      <div className="product-controls">
-        <div className="quantity">
-          <span className="quantity-text">Quantity</span>
-          <div>
-            <button
-              onClick={() => {
-                quantity > 1 && setQuantity(quantity - 1);
-              }}
-              disabled={quantity === 1 ? true : false}
-            >
-              <FontAwesomeIcon icon={faMinus} />
-            </button>
-            <span>{quantity}</span>
-            <button
-              onClick={() => {
-                quantity < Number(datas.quantity) && setQuantity(quantity + 1);
-              }}
-              disabled={quantity === Number(datas.quantity) ? true : false}
-            >
-              <FontAwesomeIcon icon={faPlus} />
-            </button>
-          </div>
-          <h3>
-            <PriceFormat price={Number(datas.price) * quantity} />
-          </h3>
-        </div>
-        <div className="controls">
-          <button>
-            Add to Cart <FontAwesomeIcon icon={faAdd} />
-          </button>
-          <button>
-            Buy Now <FontAwesomeIcon icon={faCartShopping} />
-          </button>
-          <button>
-            Add to Wish List <FontAwesomeIcon icon={faHeart} />
-          </button>
-        </div>
-      </div>
+      <Controls price={datas.price} getQuantity={datas.quantity} id={datas.id}/>
     </div>
   ) : error ? (
     <PageError error={error} loadData={loadContent} />
