@@ -1,9 +1,9 @@
-.carosal-container img {
+.carosel-container img {
   /* height: 60vh; */
   object-fit: fill;
   border-radius: 20px;
 }
-.carosal-container {
+.carosel-container {
   width: 98%;
   margin: auto;
 }

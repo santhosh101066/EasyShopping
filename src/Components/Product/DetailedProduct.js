@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
+import '../../CSS/Auth.css'
 import "../../CSS/DetailedView.css";
 import AxiosApi from "../../Api/AxiosApi";
 import { useParams } from "react-router-dom";

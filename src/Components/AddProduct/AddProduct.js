@@ -34,7 +34,7 @@ const dispatch=useDispatch()
           <option value="">Select Category</option>
           <option value="laptop">Laptop</option>
           <option value="mobile">Mobile</option>
-          <option value="tv">Television</option>
+          <option value="television">Television</option>
           <option value="headphone">Headphone</option>
         </select>
         <input type={"number"} name="price" placeholder="Price" required />

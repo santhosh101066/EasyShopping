@@ -6,14 +6,14 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 function Carousels(props) {
   return (
     <Carousel showThumbs={false} autoPlay infiniteLoop>
-      <div className="carosal-container">
-        <img src="/assets/images/carosal1.jpg" alt="carosal" />
+      <div className="carosel-container">
+        <img src="/assets/images/carosel1.jpg" alt="carosel" />
       </div>
-      <div className="carosal-container">
-        <img src="/assets/images/carosal2.jpg" alt="carosal" />
+      <div className="carosel-container">
+        <img src="/assets/images/carosel2.jpg" alt="carosel" />
       </div>
-      <div className="carosal-container">
-        <img src="/assets/images/carosal3.jpg" alt="carosal" />
+      <div className="carosel-container">
+        <img src="/assets/images/carosel3.jpg" alt="carosel" />
       </div>
     </Carousel>
   );

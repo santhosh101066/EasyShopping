@@ -41,7 +41,7 @@
 .product-controls {
   display: flex;
   flex-flow: column;
-  min-width: 200px;
+  min-width: 270px;
   height: 80%;
   margin: 3px;
   border: 3px #d0ace3 solid;
@@ -95,16 +95,16 @@
   height: 30px;
   width: 30px;
   background-color: white;
-  border:2px #cc3dff solid ;
+  border: 2px #cc3dff solid;
   align-content: center;
 }
-.quantity button:hover{
+.quantity button:hover {
   transform: scale(1.1);
 }
-.quantity button:active{
-  background-color:#efc2ff ;
+.quantity button:active {
+  background-color: #efc2ff;
 }
-.quantity button:disabled{
+.quantity button:disabled {
   border-color: gray;
 }
 .quantity .quantity-text {
@@ -116,7 +116,7 @@
   display: flex;
   justify-content: space-around;
 }
-.quantity span{
+.quantity span {
   text-align: center;
 }
 .quantity div span {
@@ -129,4 +129,44 @@
   font-size: x-large;
   color: black;
   margin: 10px;
+}
+
+.address textarea {
+  display: block;
+  margin: auto;
+  width: 80%;
+  min-height: 150px;
+  background-color: rgba(255, 255, 255, 0.125);
+  color: white;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+}
+.address button {
+  display: block;
+  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  height: 40px;
+  padding: 10px;
+  font-size: medium;
+  border-radius: 7px;
+  background-color: rgb(123, 194, 16);
+  background-image: linear-gradient(180deg, #7bc210 50%, #609511);
+  border: none;
+}
+.address button:hover {
+  background-color: rgb(123, 194, 16);
+  background-image: linear-gradient(180deg, #7bc210, #83b636);
+}
+.address button:active {
+  background-image: linear-gradient(180deg, #60970c, #85cd19);
+}
+.address button:invalid {
+  outline: 2px solid rgb(241, 124, 124);
+}
+.address-controls {
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-around;
 }

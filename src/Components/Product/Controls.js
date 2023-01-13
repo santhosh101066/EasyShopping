@@ -14,13 +14,17 @@ import {
   notifyUser,
   notifyUserError,
 } from "../../Redux/Reducer/SendNotification";
+import { setLogin } from "../../Redux/Reducer/LoginBtn";
+import AddressGetter from "../Popup/AddressGetter";
 
 function Controls({ getQuantity, id, price }) {
   let [quantity, setQuantity] = useState(1);
   let [wishlist, setWishlist] = useState(false);
   let [cart, setCart] = useState(false);
+  let [order,setOrder]=useState(false)
   const isLogin = useSelector((state) => state.Authentication.isLogin);
   const dispatch = useDispatch();
+
   function addToWishlist() {
     if (wishlist) {
       AxiosApi.delete("wishlist/" + id).then(() => {
@@ -35,10 +39,9 @@ function Controls({ getQuantity, id, price }) {
         })
         .catch((err) => {
           dispatch(
-            notifyUserError(
-              err.response ? err.response.statusText : err.message
-            )
+            notifyUserError(err.response ? "Login required" : err.message)
           );
+          err.response && dispatch(setLogin(true));
         });
     }
   }
@@ -68,6 +71,9 @@ function Controls({ getQuantity, id, price }) {
             )
           );
         });
+    } else {
+      setWishlist(false);
+      setCart(false);
     }
   }, [id, isLogin, dispatch]);
 
@@ -78,10 +84,17 @@ function Controls({ getQuantity, id, price }) {
         dispatch(notifyUser("Product removed from cart"));
       });
     } else {
-      AxiosApi.post("addtocart", { p_id: id, quantity: quantity }).then(() => {
-        setCart(true);
-        dispatch(notifyUser("Product added to cart"));
-      });
+      AxiosApi.post("addtocart", { p_id: id, quantity: quantity })
+        .then(() => {
+          setCart(true);
+          dispatch(notifyUser("Product added to cart"));
+        })
+        .catch((err) => {
+          dispatch(
+            notifyUserError(err.response ? "Login required" : err.message)
+          );
+          err.response && dispatch(setLogin(true));
+        });
     }
   }
 
@@ -117,7 +130,7 @@ function Controls({ getQuantity, id, price }) {
           {cart ? "Remove from cart" : "Add to Cart"}{" "}
           <FontAwesomeIcon icon={faAdd} />
         </button>
-        <button>
+        <button onClick={()=>setOrder(true)}>
           Buy Now <FontAwesomeIcon icon={faCartShopping} />
         </button>
         <button onClick={addToWishlist}>
@@ -132,6 +145,7 @@ function Controls({ getQuantity, id, price }) {
           )}
         </button>
       </div>
+      {order&&<AddressGetter cancel={setOrder} p_id={id} quantity={quantity}/>}
     </div>
   );
 }
