@@ -1,10 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 import AxiosApi from "../../Api/AxiosApi";
 
-const initialState = { isLogin: false };
 export const authKey = createSlice({
   name: "Auth",
-  initialState,
+  initialState:{ isLogin: false,isAdmin:false,name:'U' },
   reducers: {
     setUserLogin(state) {
       state.isLogin = true;
@@ -14,7 +13,14 @@ export const authKey = createSlice({
         localStorage.removeItem('auth')
         AxiosApi.defaults.headers.common["Authorization"]=null;
     },
+    setAdmin(state,action){
+      state.isAdmin=action.payload
+    },
+    setName(state,action){
+      state.name=action.payload
+    }
+
   },
 });
 
-export const {setUserLogin,removeUserLogin}=authKey.actions
+export const {setUserLogin,removeUserLogin ,setAdmin,setName}=authKey.actions

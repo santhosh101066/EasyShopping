@@ -1,22 +1,21 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setLogin } from "../Redux/Reducer/LoginBtn";
 import { notifyUser } from "../Redux/Reducer/SendNotification";
-import { Navigate } from "react-router-dom";
 import { useEffect } from "react";
+import Homepage from "../Components/Homepage/Homepage";
 
-function ProtectedRoute({ children }) {
-  const isLogin = useSelector((state) => state.Authentication.isLogin);
+function ProtectedRoute({ children ,isLogin }) {
   const dispatch = useDispatch();
   useEffect(() => {
-    if(!isLogin){ dispatch(setLogin(true));
-    dispatch(notifyUser("Login to Access the page"));
+    if (!isLogin) {
+      dispatch(setLogin(true));
+      dispatch(notifyUser("Login to Access the page"));
+    } else {
+      dispatch(setLogin(false));
     }
   }, [dispatch, isLogin]);
-  if (isLogin) {
-    return children;
-  } else {
-    return <Navigate to={"/"} />;
-  }
+
+  return isLogin ? children : <Homepage />;
 }
 
 export default ProtectedRoute;

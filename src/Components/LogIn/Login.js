@@ -7,7 +7,7 @@ import {
 } from "../../Redux/Reducer/SendNotification";
 import AxiosApi from "../../Api/AxiosApi";
 import FullScreenLoader from "../LoadingAnimator/FullScreenLoader";
-import { setUserLogin } from "../../Redux/Reducer/AuthKey";
+import { setAdmin, setName, setUserLogin } from "../../Redux/Reducer/AuthKey";
 import { setLogin } from "../../Redux/Reducer/LoginBtn";
 
 function Login({ setSignup }) {
@@ -27,42 +27,24 @@ function Login({ setSignup }) {
             setLoad(false);
             dispatch(notifyUser("Login Sucessfull"));
             dispatch(setLogin(false));
-            AxiosApi.defaults.headers.common['Authorization']="Bearer "+res.data
-            localStorage.setItem("auth", res.data);
-            dispatch(setUserLogin())
+            AxiosApi.defaults.headers.common["Authorization"] =
+              "Bearer " + res.data.token;
+            localStorage.setItem("auth", res.data.token);
+            res.data.type === "admin"
+              ? dispatch(setAdmin(true))
+              : dispatch(setUserLogin());
+            dispatch(setName(res.data.first_name))
           })
           .catch((err) => {
             setLoad(null);
-            if(err.response){
-              setInvalid(true)
+            if (err.response) {
+              setInvalid(true);
               dispatch(notifyUserError(err.response.statusText));
-              return
+              return;
             }
             console.log(err);
-            dispatch(notifyUserError(err.message));   
+            dispatch(notifyUserError(err.message));
           });
-
-        // AxiosApi.get(
-        //   "user?email=" + email.value + "&password=" + password.value
-        // )
-        //   .then((res) => {
-        //     console.log(res.data);
-        //     if (res.data.length > 0) {
-        //       localStorage.setItem("auth", encode(res.data[0].email));
-        //       setLoad(false);
-        //       dispatch(notifyUser("Login Sucessfull"));
-        //       setLogin(false);
-        //     } else {
-        //       email.setCustomValidity("Required");
-        //       password.setCustomValidity("Required");
-        //       dispatch(notifyUserError("Incorrect Email or password"));
-        //       setLoad(false);
-        //     }
-        //   })
-        //   .catch((err) => {
-        //     setLoad(null);
-        //     dispatch(notifyUserError(err.message));
-        //   });
       } else {
         password.setCustomValidity("Required");
         dispatch(notifyUserError("Password field required"));

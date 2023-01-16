@@ -1,18 +1,23 @@
+import {
+  removeUserLogin,
+  setAdmin,
+  setName,
+  setUserLogin,
+} from "./Redux/Reducer/AuthKey";
 import { BrowserRouter } from "react-router-dom";
-import Header from "./Components/Header/Header";
 import Notification from "./Components/LoadingAnimator/Notification";
 import Footer from "./Components/Footer/Footer";
-import "./CSS/App.css";
 import { useEffect, useState } from "react";
-import AxiosApi from "./Api/AxiosApi";
 import { useDispatch } from "react-redux";
 import { notifyUser } from "./Redux/Reducer/SendNotification";
 import Routers from "./Components/Routes/Routers";
-import { removeUserLogin, setUserLogin } from "./Redux/Reducer/AuthKey";
+import AxiosApi from "./Api/AxiosApi";
+import Header from "./Components/Header/Header";
+import "./CSS/App.css";
 
 function App() {
   const dispatch = useDispatch();
-  const [retry,setRetry]=useState(0)
+  const [retry, setRetry] = useState(0);
   useEffect(() => {
     if (localStorage.getItem("auth")) {
       AxiosApi.get("validate", {
@@ -22,9 +27,14 @@ function App() {
             `Bearer ${localStorage.getItem("auth")}`,
         },
       })
-        .then(() => {
-          AxiosApi.defaults.headers.common['Authorization']=`Bearer ${localStorage.getItem("auth")}`  
-          dispatch(setUserLogin())
+        .then((res) => {
+          AxiosApi.defaults.headers.common[
+            "Authorization"
+          ] = `Bearer ${localStorage.getItem("auth")}`;
+          res.data.type === "admin"
+            ? dispatch(setAdmin(true))
+            : dispatch(setUserLogin());
+          dispatch(setName(res.data.first_name));
           dispatch(notifyUser("You are logged in"));
         })
         .catch((err) => {
@@ -35,13 +45,14 @@ function App() {
               dispatch(removeUserLogin());
             }
           } else {
-
             dispatch(notifyUser(err.message + ": Unable to login"));
-            setTimeout(()=>{setRetry(retry+1)},6000)
+            setTimeout(() => {
+              setRetry(retry + 1);
+            }, 6000);
           }
         });
     }
-  }, [dispatch,retry]);
+  }, [dispatch, retry]);
   return (
     <div className="App">
       <Notification />

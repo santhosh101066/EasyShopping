@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../../CSS/Product.css'
 import PriceFormat from '../StringFormat/PriceFormat';
+import { SERVER } from '../../Api/AxiosApi';
 
 
 function Products({id,title,price}) {
@@ -11,7 +12,7 @@ function Products({id,title,price}) {
     },[])
     return (
         <div className='each-product' onClick={()=>navigate("/view/"+id)}>
-            <img src={process.env.REACT_APP_DB+"/assets/images/"+id+".png"} alt={title}/>
+            <img src={SERVER+"/assets/images/"+id+".png"} alt={title}/>
             <span className='p-title'>{title}</span>
             <span className='p-price'><PriceFormat price={price}/></span>
         </div>

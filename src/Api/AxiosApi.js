@@ -1,14 +1,15 @@
 import axios from "axios";
 
-const DB = process.env.REACT_APP_DB;
-// export default axios.create({
-//   baseURL: DB,
-//   headers: {
-//     Authorization:
-//       localStorage.getItem("auth") && `Bearer ${localStorage.getItem("auth")}`
-//   },
-// });
 
-export default axios.create({
-  baseURL: DB,
+export const SERVER = process.env.REACT_APP_SERVER;
+
+const AxiosApi= axios.create({
+  baseURL: SERVER,
 });
+
+// AxiosApi.interceptors.response.use(undefined,(err)=>{
+//   // Store.dispatch(notifyUser('test'))
+//   return Promise.reject(err)
+// })
+
+export default AxiosApi

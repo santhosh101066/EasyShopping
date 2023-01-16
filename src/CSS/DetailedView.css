@@ -162,11 +162,15 @@
 .address button:active {
   background-image: linear-gradient(180deg, #60970c, #85cd19);
 }
-.address button:invalid {
+.address textarea:invalid {
   outline: 2px solid rgb(241, 124, 124);
 }
 .address-controls {
   margin-top: 15px;
   display: flex;
   justify-content: space-around;
+}
+.product-alert{
+  color: red;
+  font-weight: 500;
 }

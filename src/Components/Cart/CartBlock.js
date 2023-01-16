@@ -3,9 +3,9 @@ import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import PriceFormat from "../StringFormat/PriceFormat";
 import { useNavigate } from "react-router-dom";
+import { SERVER } from "../../Api/AxiosApi";
 
 function CartBlock({ title, price, quantity = 1, id, removeFromCart }) {
-  const db = process.env.REACT_APP_DB;
   const navigate = useNavigate();
   return (
     <div
@@ -15,7 +15,7 @@ function CartBlock({ title, price, quantity = 1, id, removeFromCart }) {
       }}
     >
       <div className="cart-info">
-        <img src={`${db}/assets/images/${id}.png`} alt="Product" />
+        <img src={`${SERVER}/assets/images/${id}.png`} alt="Product" />
         <span className="title">{title}</span>
       </div>
       <div className="cart-control">

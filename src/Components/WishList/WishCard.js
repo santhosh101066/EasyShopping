@@ -3,11 +3,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import PriceFormat from "../StringFormat/PriceFormat";
 import { useNavigate } from "react-router-dom";
+import { SERVER } from "../../Api/AxiosApi";
 
-
-function WishCard({ title, price, id ,removeFromlist}) {
+function WishCard({ title, price, id, removeFromlist }) {
   const navigate = useNavigate();
-  const db = process.env.REACT_APP_DB;
 
   return (
     <div
@@ -17,7 +16,7 @@ function WishCard({ title, price, id ,removeFromlist}) {
       }}
     >
       <div className="cart-info">
-        <img src={`${db}/assets/images/${id}.png`} alt="Product" />
+        <img src={`${SERVER}/assets/images/${id}.png`} alt="Product" />
         <span className="title">{title}</span>
       </div>
       <div className="cart-control">

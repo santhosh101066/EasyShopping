@@ -2,8 +2,9 @@ import { faShoppingBag } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
 import PriceFormat from "../StringFormat/PriceFormat";
+import AddressGetter from "../Popup/AddressGetter";
 
-function Subtotal({ data }) {
+function Subtotal({ data ,reload }) {
   const [total,setTotal]=useState(0)
   useEffect(()=>{
     data.forEach(
@@ -13,6 +14,7 @@ function Subtotal({ data }) {
       setTotal(0)
     }
   },[data])
+  const [address,setAddress]=useState(false)
   return (
     <div>
       <div className="subtotal">
@@ -23,12 +25,13 @@ function Subtotal({ data }) {
               price={total}
             />
           </span>
-          <button>
+          <button onClick={()=>{setAddress(true)}}>
             Buy Now <FontAwesomeIcon icon={faShoppingBag} />
           </button>
         </div>
       </div>
       <hr />
+      {address&&<AddressGetter list={data} reload={reload}  cancel={()=>{setAddress(false)}}/>}
     </div>
   );
 }

@@ -58,7 +58,7 @@ function AddtoCart(props) {
           removeFromCart={removeFromCart}
         />
       )):<div><h4>Your Cart is empty </h4></div>}
-      {list.length > 0 && <Subtotal data={list} />}
+      {list.length > 0 && <Subtotal reload={cartLoader} data={list} />}
 
       {error && <PageError error={error} loadData={cartLoader} />}
       {load && <FullScreenLoader />}

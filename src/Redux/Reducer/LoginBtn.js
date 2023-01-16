@@ -4,5 +4,6 @@ export const loginBtn=createSlice({name:'LoginBtn',initialState:{openLogin:false
     setLogin(state,action){
         state.openLogin=action.payload
     }
+    
 }})
 export const {setLogin} =loginBtn.actions

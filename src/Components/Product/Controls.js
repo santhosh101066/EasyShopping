@@ -21,7 +21,7 @@ function Controls({ getQuantity, id, price }) {
   let [quantity, setQuantity] = useState(1);
   let [wishlist, setWishlist] = useState(false);
   let [cart, setCart] = useState(false);
-  let [order,setOrder]=useState(false)
+  let [order, setOrder] = useState(false);
   const isLogin = useSelector((state) => state.Authentication.isLogin);
   const dispatch = useDispatch();
 
@@ -126,13 +126,24 @@ function Controls({ getQuantity, id, price }) {
         </h3>
       </div>
       <div className="controls">
-        <button onClick={Add2Cart}>
-          {cart ? "Remove from cart" : "Add to Cart"}{" "}
-          <FontAwesomeIcon icon={faAdd} />
-        </button>
-        <button onClick={()=>setOrder(true)}>
-          Buy Now <FontAwesomeIcon icon={faCartShopping} />
-        </button>
+        {Number(getQuantity) <= 5 && (
+          <span className="product-alert">Only {getQuantity} stocks available </span>
+        )}
+
+        {getQuantity !== 0 ? (
+          <>
+            <button onClick={Add2Cart}>
+              {cart ? "Remove from cart" : "Add to Cart"}{" "}
+              <FontAwesomeIcon icon={faAdd} />
+            </button>
+            <button onClick={() => setOrder(true)}>
+              Buy Now <FontAwesomeIcon icon={faCartShopping} />
+            </button>
+          </>
+        ) : (
+          <span className="product-alert">Out of stock</span>
+        )}
+
         <button onClick={addToWishlist}>
           {wishlist ? (
             <>
@@ -145,7 +156,9 @@ function Controls({ getQuantity, id, price }) {
           )}
         </button>
       </div>
-      {order&&<AddressGetter cancel={setOrder} p_id={id} quantity={quantity}/>}
+      {order && (
+        <AddressGetter cancel={setOrder} p_id={id} quantity={quantity} />
+      )}
     </div>
   );
 }

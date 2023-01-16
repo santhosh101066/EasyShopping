@@ -1,16 +1,15 @@
 import React, { useCallback, useEffect, useState } from "react";
-import '../../CSS/Auth.css'
-import "../../CSS/DetailedView.css";
-import AxiosApi from "../../Api/AxiosApi";
+import AxiosApi, { SERVER } from "../../Api/AxiosApi";
 import { useParams } from "react-router-dom";
 import PageError from "../Alert.js/PageError";
 import FullScreenLoader from "../LoadingAnimator/FullScreenLoader";
 import { useDispatch } from "react-redux";
 import { notifyUserError } from "../../Redux/Reducer/SendNotification";
 import Controls from "./Controls";
+import '../../CSS/Auth.css'
+import "../../CSS/DetailedView.css";
 
 function DetailedProduct(props) {
-  const db = process.env.REACT_APP_DB;
   let [image, setImage] = useState();
   let [datas, setDatas] = useState(null);
   let [images, setImages] = useState([]);
@@ -27,14 +26,14 @@ function DetailedProduct(props) {
     AxiosApi.get("product/detailed/" + param.productId)
       .then((res) => {
         const data = res.data;
-        setImage(`${db}/assets/images/${data.id}.png`);
+        setImage(`${SERVER}/assets/images/${data.id}.png`);
         setImages(() => {
           const img = [];
           for (let index = 0; index < data.filesCount; index++) {
             img.push(
               <img
                 key={index}
-                src={`${db}/assets/images/${data.id}_${index}_.png`}
+                src={`${SERVER}/assets/images/${data.id}_${index}_.png`}
                 alt=""
               />
             );
@@ -49,7 +48,7 @@ function DetailedProduct(props) {
         setError(err.message);
         dispatch(notifyUserError(err.message))
       });
-  }, [db, dispatch, param.productId]);
+  }, [dispatch, param.productId]);
 
   useEffect(() => {
     loadContent();
@@ -60,7 +59,7 @@ function DetailedProduct(props) {
       <div className="thumb-images">
         <div className="thumbs" onClick={handleClickImage}>
           {/* thumb img */}
-          <img src={`${db}/assets/images/${datas.id}.png`} alt="" />
+          <img src={`${SERVER}/assets/images/${datas.id}.png`} alt="" />
           {images}
         </div>
       </div>
