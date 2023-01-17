@@ -2,7 +2,7 @@ import { useDispatch } from "react-redux";
 import { setLogin } from "../Redux/Reducer/LoginBtn";
 import { notifyUser } from "../Redux/Reducer/SendNotification";
 import { useEffect } from "react";
-import Homepage from "../Components/Homepage/Homepage";
+import { Navigate } from "react-router-dom";
 
 function ProtectedRoute({ children ,isLogin }) {
   const dispatch = useDispatch();
@@ -15,7 +15,7 @@ function ProtectedRoute({ children ,isLogin }) {
     }
   }, [dispatch, isLogin]);
 
-  return isLogin ? children : <Homepage />;
+  return isLogin ? children :<Navigate to={'/'}/>;
 }
 
 export default ProtectedRoute;

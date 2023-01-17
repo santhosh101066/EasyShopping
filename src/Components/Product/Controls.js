@@ -16,6 +16,7 @@ import {
 } from "../../Redux/Reducer/SendNotification";
 import { setLogin } from "../../Redux/Reducer/LoginBtn";
 import AddressGetter from "../Popup/AddressGetter";
+import { setCartNumber } from "../../Redux/Reducer/AuthKey";
 
 function Controls({ getQuantity, id, price }) {
   let [quantity, setQuantity] = useState(1);
@@ -82,12 +83,18 @@ function Controls({ getQuantity, id, price }) {
       AxiosApi.delete("cart/" + id).then(() => {
         setCart(false);
         dispatch(notifyUser("Product removed from cart"));
+        AxiosApi.get("cartcount").then((res) => {
+          dispatch(setCartNumber(res.data.length));
+        });
       });
     } else {
       AxiosApi.post("addtocart", { p_id: id, quantity: quantity })
         .then(() => {
           setCart(true);
           dispatch(notifyUser("Product added to cart"));
+          AxiosApi.get("cartcount").then((res) => {
+            dispatch(setCartNumber(res.data.length));
+          });
         })
         .catch((err) => {
           dispatch(
@@ -127,7 +134,9 @@ function Controls({ getQuantity, id, price }) {
       </div>
       <div className="controls">
         {Number(getQuantity) <= 5 && (
-          <span className="product-alert">Only {getQuantity} stocks available </span>
+          <span className="product-alert">
+            Only {getQuantity} stocks available{" "}
+          </span>
         )}
 
         {getQuantity !== 0 ? (

@@ -1,6 +1,6 @@
 import React, { Suspense, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import FullScreenLoader from "../LoadingAnimator/FullScreenLoader";
+import { useNavigate } from "react-router-dom";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useDispatch, useSelector } from "react-redux";
@@ -13,15 +13,15 @@ const Authenticate = React.lazy(() => import("../LogIn/Authenticate"));
 
 function Header() {
   const [show, setShow] = useState(false);
-  // const [login, setLogin] = useState(false);
   const [toggleCategory, setToggleCategory] = useState(false);
   const [toggleProfile, setToggleProfile] = useState(false);
   const [getWidth, setWidth] = useState(false);
   const login = useSelector((state) => state.loginBtn.openLogin);
-  const userName=useSelector(state=>state.Authentication.name)
+  const userName = useSelector((state) => state.Authentication.name);
   const isAdmin = useSelector((state) => state.Authentication.isAdmin);
   const navigate = useNavigate();
   const isLogin = useSelector((state) => state.Authentication.isLogin);
+  const cartNo = useSelector((state) => state.Authentication.cartNo);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -97,6 +97,9 @@ function Header() {
                 }}
               >
                 My Cart
+                <div className="cart-number">
+                  <span>{cartNo}</span>
+                </div>
               </li>
 
               <div
@@ -105,7 +108,7 @@ function Header() {
               >
                 <li>
                   {/* <FontAwesomeIcon icon={faUserCircle} size="2x" /> */}
-                   <div className="profile">
+                  <div className="profile">
                     <span>{userName[0].toUpperCase()}</span>
                   </div>
                 </li>
@@ -150,15 +153,15 @@ function Header() {
           )}
           {isAdmin && (
             <>
-              <li onClick={()=>navigate('addproduct')}>Add Product</li>
-              <li onClick={()=>navigate('order')}>Orders</li>
+              <li onClick={() => navigate("addproduct")}>Add Product</li>
+              <li onClick={() => navigate("order")}>Orders</li>
               <div
                 className="category"
                 onClick={() => setToggleProfile(!toggleProfile)}
               >
                 <li>
-                 {/* <FontAwesomeIcon icon={faUserCircle} size="2x" /> */}
-                 <div className="profile">
+                  {/* <FontAwesomeIcon icon={faUserCircle} size="2x" /> */}
+                  <div className="profile">
                     <span>{userName[0].toUpperCase()}</span>
                   </div>
                 </li>

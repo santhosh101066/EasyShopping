@@ -7,7 +7,7 @@ import {
 } from "../../Redux/Reducer/SendNotification";
 import AxiosApi from "../../Api/AxiosApi";
 import FullScreenLoader from "../LoadingAnimator/FullScreenLoader";
-import { setAdmin, setName, setUserLogin } from "../../Redux/Reducer/AuthKey";
+import { setAdmin, setCartNumber, setName, setUserLogin } from "../../Redux/Reducer/AuthKey";
 import { setLogin } from "../../Redux/Reducer/LoginBtn";
 
 function Login({ setSignup }) {
@@ -30,6 +30,9 @@ function Login({ setSignup }) {
             AxiosApi.defaults.headers.common["Authorization"] =
               "Bearer " + res.data.token;
             localStorage.setItem("auth", res.data.token);
+            AxiosApi.get('cartcount').then(res=>{
+              dispatch(setCartNumber(res.data.length))
+          })
             res.data.type === "admin"
               ? dispatch(setAdmin(true))
               : dispatch(setUserLogin());

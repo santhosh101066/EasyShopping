@@ -1,22 +1,24 @@
 import React, { useCallback, useEffect, useState } from "react";
 import AxiosApi, { SERVER } from "../../../Api/AxiosApi";
 import PriceFormat from "../../StringFormat/PriceFormat";
-import "../../../CSS/Auth.css";
 import { useDispatch } from "react-redux";
 import { notifyUser } from "../../../Redux/Reducer/SendNotification";
 import CustomerDetails from "./CustomerDetails";
+import "../../../CSS/Auth.css";
 
 function ManageOrders(props) {
   const [list, setList] = useState([]);
   const [details, setDetails] = useState(null);
   const dispatch = useDispatch();
+
   const initialize = useCallback(() => {
     AxiosApi.get("adminorder").then((res) => setList(res.data.reverse()));
-    // setList((list) => list.reverse());
   }, []);
+
   useEffect(() => {
     initialize();
   }, [initialize]);
+
   const handleChanges = useCallback(
     (e, val) => {
       const status = e.target.value;
@@ -33,6 +35,7 @@ function ManageOrders(props) {
     },
     [dispatch]
   );
+
   return (
     <div>
       {list.map((val) => (

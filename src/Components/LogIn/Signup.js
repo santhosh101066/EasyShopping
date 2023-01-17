@@ -188,7 +188,6 @@ function Signup({ setSignup }) {
                 </li>
               </ul>
             </div>
-            {/* <span className="invalid">Password must contain </span> */}
           </div>
           <div>
             <input

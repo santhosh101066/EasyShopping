@@ -1,24 +1,29 @@
-import React, {createRef } from "react";
 import AxiosApi from "../../../Api/AxiosApi";
-import "../../../CSS/AddProduct.css";
+import React, { createRef } from "react";
 import { useDispatch } from "react-redux";
-import { notifyUser, notifyUserError } from "../../../Redux/Reducer/SendNotification";
+import {
+  notifyUser,
+  notifyUserError,
+} from "../../../Redux/Reducer/SendNotification";
+import "../../../CSS/AddProduct.css";
 
 function AddProduct() {
   const FormDatas = createRef();
-const dispatch=useDispatch()
+
+  const dispatch = useDispatch();
   function CreateProduct(e) {
     const data = new FormData(FormDatas.current);
     AxiosApi.post("newproduct", data, {
       headers: { "Content-Type": "multipart/form-data" },
-    }).then(() => {
-        dispatch(notifyUser("Product Added Sucessfully"))
-        FormDatas.current.reset()
     })
-    .catch(err=>{
-        dispatch(notifyUserError(err.message))  
-    });
-    
+      .then(() => {
+        dispatch(notifyUser("Product Added Sucessfully"));
+        FormDatas.current.reset();
+      })
+      .catch((err) => {
+        dispatch(notifyUserError(err.message));
+      });
+
     e.preventDefault();
   }
 
@@ -26,10 +31,33 @@ const dispatch=useDispatch()
     <div className="add-product">
       <h3>Add New Product</h3>
       <form ref={FormDatas} onSubmit={CreateProduct}>
-        <input type={"text"} min={10} name="short_title" placeholder="Short Title" required/>
-        <input type={"text"} min={30} name="title" placeholder="Title" required/>
-        <input type={"number"} min={5} name="quantity" placeholder="Quantity" required/>
-        <textarea name="more_details" minLength={200} placeholder="More Details" required />
+        <input
+          type={"text"}
+          min={10}
+          name="short_title"
+          placeholder="Short Title"
+          required
+        />
+        <input
+          type={"text"}
+          min={30}
+          name="title"
+          placeholder="Title"
+          required
+        />
+        <input
+          type={"number"}
+          min={5}
+          name="quantity"
+          placeholder="Quantity"
+          required
+        />
+        <textarea
+          name="more_details"
+          minLength={200}
+          placeholder="More Details"
+          required
+        />
         <select name="category" required>
           <option value="">Select Category</option>
           <option value="laptop">Laptop</option>
@@ -37,10 +65,22 @@ const dispatch=useDispatch()
           <option value="television">Television</option>
           <option value="headphone">Headphone</option>
         </select>
-        <input type={"number"} name="price" min={500} placeholder="Price" required />
+        <input
+          type={"number"}
+          name="price"
+          min={500}
+          placeholder="Price"
+          required
+        />
         <br />
         <label htmlFor="main">Main Image</label>
-        <input id="main" type={"file"} name="main_image" accept="image/*" required/>
+        <input
+          id="main"
+          type={"file"}
+          name="main_image"
+          accept="image/*"
+          required
+        />
         <br />
         <label htmlFor="other">Other Images</label>
         <input

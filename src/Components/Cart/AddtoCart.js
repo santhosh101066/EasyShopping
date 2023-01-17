@@ -1,13 +1,14 @@
-import React, { useCallback, useEffect, useState } from "react";
 import CartBlock from "../Cart/CartBlock";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
+import PageError from "../Alert.js/PageError";
 import Subtotal from "../Cart/Subtotal";
 import AxiosApi from "../../Api/AxiosApi";
+import FullScreenLoader from "../LoadingAnimator/FullScreenLoader";
+import React, { useCallback, useEffect, useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch } from "react-redux";
 import { notifyUser } from "../../Redux/Reducer/SendNotification";
-import PageError from "../Alert.js/PageError";
-import FullScreenLoader from "../LoadingAnimator/FullScreenLoader";
+import { setCartNumber } from "../../Redux/Reducer/AuthKey";
 
 function AddtoCart(props) {
   const [list, setList] = useState([]);
@@ -38,6 +39,9 @@ function AddtoCart(props) {
       AxiosApi.delete("cart/" + id).then(() => {
         dispatch(notifyUser("Product removed from Cart"));
         setList((list) => list.filter((val) => val.id !== id && val.id));
+        AxiosApi.get("cartcount").then((res) => {
+          dispatch(setCartNumber(res.data.length));
+        });
       });
     },
     [dispatch]
@@ -48,16 +52,22 @@ function AddtoCart(props) {
         Shopping Cart <FontAwesomeIcon icon={faShoppingCart} />
       </h1>
       <hr />
-      {list.length>0?list.map((val) => (
-        <CartBlock
-          key={val.id}
-          price={val.price}
-          quantity={val.quantity}
-          id={val.id}
-          title={val.title}
-          removeFromCart={removeFromCart}
-        />
-      )):<div><h4>Your Cart is empty </h4></div>}
+      {list.length > 0 ? (
+        list.map((val) => (
+          <CartBlock
+            key={val.id}
+            price={val.price}
+            quantity={val.quantity}
+            id={val.id}
+            title={val.title}
+            removeFromCart={removeFromCart}
+          />
+        ))
+      ) : (
+        <div>
+          <h4>Your Cart is empty </h4>
+        </div>
+      )}
       {list.length > 0 && <Subtotal reload={cartLoader} data={list} />}
 
       {error && <PageError error={error} loadData={cartLoader} />}
