@@ -8,6 +8,7 @@ import { removeUserLogin, setAdmin } from "../../Redux/Reducer/AuthKey";
 import { notifyUser } from "../../Redux/Reducer/SendNotification";
 import { setLogin } from "../../Redux/Reducer/LoginBtn";
 import { category } from "../../Data/ProductData";
+import Search from "../Search/Search";
 
 const Authenticate = React.lazy(() => import("../LogIn/Authenticate"));
 
@@ -58,6 +59,9 @@ function Header() {
               </div>
             </div>
           </li>
+          <li>
+              <Search/>
+            </li>
           <div
             className="category"
             onClick={() => setToggleCategory(!toggleCategory)}

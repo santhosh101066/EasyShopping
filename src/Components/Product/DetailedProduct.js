@@ -11,7 +11,7 @@ import "../../CSS/DetailedView.css";
 
 function DetailedProduct(props) {
   let [image, setImage] = useState();
-  let [datas, setDatas] = useState(null);
+  let [datas, setDatas] = useState();
   let [images, setImages] = useState([]);
   
   let [error, setError] = useState();
@@ -26,6 +26,7 @@ function DetailedProduct(props) {
     AxiosApi.get("product/detailed/" + param.productId)
       .then((res) => {
         const data = res.data;
+        console.log(res);
         setImage(`${SERVER}/assets/images/${data.id}.png`);
         setImages(() => {
           const img = [];
@@ -45,8 +46,8 @@ function DetailedProduct(props) {
         setError(null);
       })
       .catch((err) => {
-        setError(err.message);
-        dispatch(notifyUserError(err.message))
+        setError(err.response?err.response.statusText:err.message);
+        dispatch(notifyUserError(err.response?err.response.statusText:err.message))
       });
   }, [dispatch, param.productId]);
 
@@ -72,7 +73,7 @@ function DetailedProduct(props) {
         <h2>{datas.title}</h2>
         <h4>More details</h4>
         <ul>
-          {datas.more_details.split("\n").map((val,index) => val && <li key={index}>{val}</li>)}
+          {datas.more_details&& datas.more_details.split("\n").map((val,index) => val && <li key={index}>{val}</li>)}
         </ul>
       </div>
       <Controls price={datas.price} getQuantity={datas.quantity} id={datas.id}/>

@@ -33,7 +33,7 @@
 
   user-select: none;
 }
-.header .head-ul li:not(.app-title) {
+.header .head-ul li:not(.app-title):not(.search li) {
   width: max-content;
   height: max-content;
   min-width: 90px;
@@ -45,7 +45,7 @@
   text-align: center;
   cursor: pointer;
 }
-.header .head-ul li:not(.app-title):hover,
+.header .head-ul li:not(.app-title):not(.search li):hover,
 .category li:hover {
   background-color: #554994;
   background-image: linear-gradient(
@@ -234,7 +234,7 @@
     align-items: center;
     list-style: none;
   }
-  .header .head-ul li {
+  .header .head-ul li:not(.search li) {
     width: 100%;
   }
   .category {
@@ -247,7 +247,7 @@
   .drop-content {
     position: relative;
   }
-  .header .head-ul li:not(.app-title) {
+  .header .head-ul li:not(.app-title):not(.search li) {
     width: 100%;
     height: max-content;
     margin: auto;
@@ -257,7 +257,7 @@
   .header .head-ul li.app-title:first-child {
     flex-grow: 1;
   }
-  .header .head-ul li {
+  .header .head-ul li:not(.search li) {
     border-bottom: 1px solid;
   }
   .header div.category {
@@ -278,10 +278,11 @@
     margin: auto;
   }
 
-  .show-content .head-ul li:not(.app-title) {
+  .show-content .head-ul li:not(.app-title):not(.search li) {
     display: block;
   }
-  .hide-content .head-ul li:not(.app-title) {
+  .hide-content .head-ul li:not(.app-title:not(.search li)) {
     display: none;
   }
 }
+
