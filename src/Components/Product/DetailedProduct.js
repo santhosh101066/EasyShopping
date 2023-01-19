@@ -57,7 +57,8 @@ function DetailedProduct(props) {
 
   return datas ? (
     <div className="detailed-product">
-      <div className="thumb-images">
+     <div className="detailed-images">
+     <div className="thumb-images">
         <div className="thumbs" onClick={handleClickImage}>
           {/* thumb img */}
           <img src={`${SERVER}/assets/images/${datas.id}.png`} alt="" />
@@ -69,6 +70,7 @@ function DetailedProduct(props) {
         {/* Product img */}
         <img src={image} alt="" />
       </div>
+     </div>
       <div className="product-details">
         <h2>{datas.title}</h2>
         <h4>More details</h4>

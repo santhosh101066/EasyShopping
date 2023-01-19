@@ -24,6 +24,7 @@ function Controls({ getQuantity, id, price }) {
   let [cart, setCart] = useState(false);
   let [order, setOrder] = useState(false);
   const isLogin = useSelector((state) => state.Authentication.isLogin);
+  const isAdmin = useSelector((state) => state.Authentication.isAdmin);
   const dispatch = useDispatch();
 
   function addToWishlist() {
@@ -110,23 +111,29 @@ function Controls({ getQuantity, id, price }) {
       <div className="quantity">
         <span className="quantity-text">Quantity</span>
         <div>
-          <button
-            onClick={() => {
-              quantity > 1 && setQuantity(quantity - 1);
-            }}
-            disabled={quantity === 1 ? true : false}
-          >
-            <FontAwesomeIcon icon={faMinus} />
-          </button>
-          <span>{quantity}</span>
-          <button
-            onClick={() => {
-              quantity < Number(getQuantity) && setQuantity(quantity + 1);
-            }}
-            disabled={quantity === Number(getQuantity) ? true : false}
-          >
-            <FontAwesomeIcon icon={faPlus} />
-          </button>
+          {!isAdmin ? (
+            <>
+              <button
+                onClick={() => {
+                  quantity > 1 && setQuantity(quantity - 1);
+                }}
+                disabled={quantity === 1 ? true : false}
+              >
+                <FontAwesomeIcon icon={faMinus} />
+              </button>
+              <span>{quantity}</span>
+              <button
+                onClick={() => {
+                  quantity < Number(getQuantity) && setQuantity(quantity + 1);
+                }}
+                disabled={quantity === Number(getQuantity) ? true : false}
+              >
+                <FontAwesomeIcon icon={faPlus} />
+              </button>
+            </>
+          ) : (
+            <span>{getQuantity}</span>
+          )}
         </div>
         <h3>
           <PriceFormat price={Number(price) * quantity} />
@@ -140,30 +147,33 @@ function Controls({ getQuantity, id, price }) {
         )}
 
         {getQuantity !== 0 ? (
-          <>
-            <button onClick={Add2Cart}>
-              {cart ? "Remove from cart" : "Add to Cart"}{" "}
-              <FontAwesomeIcon icon={faAdd} />
-            </button>
-            <button onClick={() => setOrder(true)}>
-              Buy Now <FontAwesomeIcon icon={faCartShopping} />
-            </button>
-          </>
+          !isAdmin && (
+            <>
+              <button onClick={Add2Cart}>
+                {cart ? "Remove from cart" : "Add to Cart"}{" "}
+                <FontAwesomeIcon icon={faAdd} />
+              </button>
+              <button onClick={() => setOrder(true)}>
+                Buy Now <FontAwesomeIcon icon={faCartShopping} />
+              </button>
+            </>
+          )
         ) : (
           <span className="product-alert">Out of stock</span>
         )}
-
-        <button onClick={addToWishlist}>
-          {wishlist ? (
-            <>
-              Remove from Wish List <FontAwesomeIcon icon={faHeart} />
-            </>
-          ) : (
-            <>
-              Add to Wish List <FontAwesomeIcon icon={faHeart} />
-            </>
-          )}
-        </button>
+        {!isAdmin && (
+          <button onClick={addToWishlist}>
+            {wishlist ? (
+              <>
+                Remove from Wish List <FontAwesomeIcon icon={faHeart} />
+              </>
+            ) : (
+              <>
+                Add to Wish List <FontAwesomeIcon icon={faHeart} />
+              </>
+            )}
+          </button>
+        )}
       </div>
       {order && (
         <AddressGetter cancel={setOrder} p_id={id} quantity={quantity} />

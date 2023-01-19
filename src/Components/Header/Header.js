@@ -49,7 +49,7 @@ function Header() {
               className="banner"
               onClick={() => {
                 navigate("/");
-                setShow((val) => !val);
+                setShow((val) => false);
               }}
             >
               <img src="/assets/logo/logoalone192.png" alt="logo"></img>
@@ -59,9 +59,9 @@ function Header() {
               </div>
             </div>
           </li>
-          <li>
-              <Search/>
-            </li>
+
+          <Search />
+
           <div
             className="category"
             onClick={() => setToggleCategory(!toggleCategory)}
@@ -127,6 +127,7 @@ function Header() {
                   <li
                     onClick={() => {
                       dispatch(setAdmin(false));
+                      setShow((val) => false);
                       dispatch(removeUserLogin());
                       dispatch(notifyUser("You Have been Logged out"));
                     }}
@@ -135,6 +136,7 @@ function Header() {
                   </li>
                   <li
                     onClick={() => {
+                      setShow((val) => false);
                       navigate("orders");
                     }}
                   >
@@ -147,6 +149,7 @@ function Header() {
             isAdmin || (
               <li
                 onClick={() => {
+                  setShow((val) => false);
                   dispatch(setLogin(true));
                   setShow((val) => !val);
                 }}
@@ -161,7 +164,10 @@ function Header() {
               <li onClick={() => navigate("order")}>Orders</li>
               <div
                 className="category"
-                onClick={() => setToggleProfile(!toggleProfile)}
+                onClick={() => {
+                  setToggleProfile(!toggleProfile);
+                  setShow((val) => false);
+                }}
               >
                 <li>
                   {/* <FontAwesomeIcon icon={faUserCircle} size="2x" /> */}

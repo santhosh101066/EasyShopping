@@ -10,6 +10,7 @@
 .order img{
     width: 100px;
     height: 100px;
+    object-fit: contain;
 }
 .order button{
     height: fit-content;
@@ -44,3 +45,13 @@
 .order-info button:active{
     background-color: rgb(152, 86, 0);
 }  
+
+@media only screen and (max-width: 780px){
+    .order{
+        flex-direction: column;
+    }
+    .order-main{
+        width: 100%;
+    }
+
+}

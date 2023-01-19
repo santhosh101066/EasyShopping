@@ -39,7 +39,7 @@ function ProductPage(props) {
     loadData();
   }, [loadData]);
 
-  return error?<PageError error={error} loadData={loadData}/>: loading || <Categorize category={captalize(getParam.type + "s")} products={product} />
+  return error?<PageError error={error} loadData={loadData}/>: loading || <Categorize category={captalize(getParam.type + "s")} load={loadData} products={product} />
 
 }
 

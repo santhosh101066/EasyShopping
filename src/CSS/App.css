@@ -284,5 +284,13 @@
   .hide-content .head-ul li:not(.app-title:not(.search li)) {
     display: none;
   }
+  .profile{
+    margin: auto;
+    width: fit-content;
+  }
+  .search{
+    margin: auto;
+    
+  }
 }
 

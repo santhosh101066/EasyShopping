@@ -28,7 +28,7 @@
 }
 .product-image {
   display: block;
-  width: 20%;
+  width: 100%;
   height: fit-content;
   min-width: 200px;
   margin: 10px;
@@ -173,4 +173,20 @@
 .product-alert{
   color: red;
   font-weight: 500;
+}
+.detailed-images{
+  display: flex;
+}
+
+@media only screen and (max-width: 780px){
+  .detailed-product {
+    flex-direction: column;
+  }
+  .detailed-images{
+    width: 100%;
+    margin: auto;
+  }
+  .product-image{
+    width: max-content;
+  }
 }
