@@ -205,7 +205,7 @@
   padding-top: 20px;
   font-size: smaller;
 }
-.cart-number{
+.cart-number {
   background-color: rgb(0, 18, 68);
   height: 20px;
   width: 20px;
@@ -217,7 +217,7 @@
   justify-content: center;
   align-items: center;
 }
-.cart-number span{
+.cart-number span {
   font-size: x-small;
 }
 
@@ -278,19 +278,19 @@
     margin: auto;
   }
 
-  .show-content .head-ul li:not(.app-title):not(.search li) {
+  .show-content .head-ul li:not(.app-title):not(.search li),
+  .show-content .search {
     display: block;
   }
-  .hide-content .head-ul li:not(.app-title:not(.search li)) {
+  .hide-content .head-ul li:not(.app-title):not(.search li),
+  .hide-content .search {
     display: none;
   }
-  .profile{
+  .profile {
     margin: auto;
     width: fit-content;
   }
-  .search{
+  .search {
     margin: auto;
-    
   }
 }
-

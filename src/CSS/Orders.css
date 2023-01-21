@@ -23,9 +23,15 @@
 .order-info{
     gap: 10px;
     display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.order-info div{
+    width: max-content;
 }
 .order-info *{
     padding: 5px;
+    margin: 5px;
     width: max-content;
 }
 .order-main{
@@ -52,6 +58,10 @@
     }
     .order-main{
         width: 100%;
+    }
+    .order-info{
+        display: flex;
+        flex-direction: column;
     }
 
 }

@@ -181,6 +181,7 @@
 @media only screen and (max-width: 780px){
   .detailed-product {
     flex-direction: column;
+    padding: 10px;
   }
   .detailed-images{
     width: 100%;

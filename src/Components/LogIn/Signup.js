@@ -159,6 +159,7 @@ function Signup({ setSignup }) {
               placeholder="Email"
               name="email"
               onChange={handlechanges}
+              pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
             />
           </div>
           <div>

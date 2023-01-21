@@ -45,34 +45,38 @@ function ManageOrders(props) {
             <h3>{val.title}</h3>
           </div>
           <div className="order-info">
-            <span>Quantity : {val.quantity}</span>
-            <span>
-              Price: <PriceFormat price={Number(val.price) * val.quantity} />
-            </span>
-            <select
-              defaultValue={val.status}
-              onChange={(e) => handleChanges(e, val)}
-            >
-              <option value={"Order Placed"}>Order Placed</option>
-              <option value={"Shipped"}>Shipped</option>
-              <option value={"Dispatched"}>Dispatched</option>
-              <option value={"Out for delivery"}>Out for delivery</option>
-              <option value={"Delivered"}>Delivered</option>
-              <option value={"Cancelled"}>Cancel order</option>
-            </select>
-            <button
-              onClick={() => {
-                setDetails(
-                  <CustomerDetails
-                    close={setDetails}
-                    address={val.address}
-                    user_id={val.user_id}
-                  />
-                );
-              }}
-            >
-              Details
-            </button>
+            <div>
+              <span>Quantity : {val.quantity}</span>
+              <span>
+                Price: <PriceFormat price={Number(val.price) * val.quantity} />
+              </span>
+            </div>
+            <div>
+              <select
+                defaultValue={val.status}
+                onChange={(e) => handleChanges(e, val)}
+              >
+                <option value={"Order Placed"}>Order Placed</option>
+                <option value={"Shipped"}>Shipped</option>
+                <option value={"Dispatched"}>Dispatched</option>
+                <option value={"Out for delivery"}>Out for delivery</option>
+                <option value={"Delivered"}>Delivered</option>
+                <option value={"Cancelled"}>Cancel order</option>
+              </select>
+              <button
+                onClick={() => {
+                  setDetails(
+                    <CustomerDetails
+                      close={setDetails}
+                      address={val.address}
+                      user_id={val.user_id}
+                    />
+                  );
+                }}
+              >
+                Details
+              </button>
+            </div>
           </div>
         </div>
       ))}

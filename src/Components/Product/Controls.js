@@ -109,44 +109,49 @@ function Controls({ getQuantity, id, price }) {
   return (
     <div className="product-controls">
       <div className="quantity">
-        <span className="quantity-text">Quantity</span>
-        <div>
-          {!isAdmin ? (
-            <>
-              <button
-                onClick={() => {
-                  quantity > 1 && setQuantity(quantity - 1);
-                }}
-                disabled={quantity === 1 ? true : false}
-              >
-                <FontAwesomeIcon icon={faMinus} />
-              </button>
-              <span>{quantity}</span>
-              <button
-                onClick={() => {
-                  quantity < Number(getQuantity) && setQuantity(quantity + 1);
-                }}
-                disabled={quantity === Number(getQuantity) ? true : false}
-              >
-                <FontAwesomeIcon icon={faPlus} />
-              </button>
-            </>
-          ) : (
-            <span>{getQuantity}</span>
-          )}
-        </div>
+        {Number(getQuantity) > 1 && (
+          <>
+            <span className="quantity-text">Quantity</span>
+            <div>
+              {!isAdmin ? (
+                <>
+                  <button
+                    onClick={() => {
+                      quantity > 1 && setQuantity(quantity - 1);
+                    }}
+                    disabled={quantity === 1 ? true : false}
+                  >
+                    <FontAwesomeIcon icon={faMinus} />
+                  </button>
+                  <span>{quantity}</span>
+                  <button
+                    onClick={() => {
+                      quantity < Number(getQuantity) &&
+                        setQuantity(quantity + 1);
+                    }}
+                    disabled={quantity === Number(getQuantity) ? true : false}
+                  >
+                    <FontAwesomeIcon icon={faPlus} />
+                  </button>
+                </>
+              ) : (
+                <span>{getQuantity}</span>
+              )}
+            </div>
+          </>
+        )}
         <h3>
           <PriceFormat price={Number(price) * quantity} />
         </h3>
       </div>
       <div className="controls">
-        {Number(getQuantity) <= 5 && (
+        {Number(getQuantity) <= 5 && Number(getQuantity) > 0 && (
           <span className="product-alert">
             Only {getQuantity} stocks available{" "}
           </span>
         )}
 
-        {getQuantity !== 0 ? (
+        {Number(getQuantity) > 1 ? (
           !isAdmin && (
             <>
               <button onClick={Add2Cart}>

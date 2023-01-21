@@ -25,5 +25,5 @@ export const authKey = createSlice({
   },
 });
 
-export const { setUserLogin, removeUserLogin, setAdmin, setName , setCartNumber } =
+export const { setUserLogin, removeUserLogin, setAdmin, setName, setCartNumber } =
   authKey.actions;

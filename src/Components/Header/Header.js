@@ -13,6 +13,8 @@ import Search from "../Search/Search";
 const Authenticate = React.lazy(() => import("../LogIn/Authenticate"));
 
 function Header() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [show, setShow] = useState(false);
   const [toggleCategory, setToggleCategory] = useState(false);
   const [toggleProfile, setToggleProfile] = useState(false);
@@ -20,10 +22,8 @@ function Header() {
   const login = useSelector((state) => state.loginBtn.openLogin);
   const userName = useSelector((state) => state.Authentication.name);
   const isAdmin = useSelector((state) => state.Authentication.isAdmin);
-  const navigate = useNavigate();
   const isLogin = useSelector((state) => state.Authentication.isLogin);
   const cartNo = useSelector((state) => state.Authentication.cartNo);
-  const dispatch = useDispatch();
 
   useEffect(() => {
     function widthManage() {
@@ -42,7 +42,7 @@ function Header() {
 
   return (
     <header className={show ? "header show-content" : "header hide-content"}>
-      <nav>
+      <nav >
         <ul className="head-ul">
           <li className="app-title">
             <div
@@ -78,7 +78,13 @@ function Header() {
               {/* <li>Laptop</li>
               <li>Mobile</li> */}
               {category.map((val) => (
-                <li key={val.id} onClick={() => navigate("products/" + val.id)}>
+                <li
+                  key={val.id}
+                  onClick={() => {
+                    navigate("products/" + val.id);
+                    setShow(false);
+                  }}
+                >
                   {val.name}
                 </li>
               ))}
@@ -160,13 +166,27 @@ function Header() {
           )}
           {isAdmin && (
             <>
-              <li onClick={() => navigate("addproduct")}>Add Product</li>
-              <li onClick={() => navigate("order")}>Orders</li>
+              <li
+                onClick={() => {
+                  navigate("addproduct");
+                  setShow(false);
+                }}
+              >
+                Add Product
+              </li>
+              <li
+                onClick={() => {
+                  navigate("order");
+                  setShow(false);
+                }}
+              >
+                Orders
+              </li>
               <div
                 className="category"
                 onClick={() => {
                   setToggleProfile(!toggleProfile);
-                  setShow((val) => false);
+                 
                 }}
               >
                 <li>
@@ -187,6 +207,7 @@ function Header() {
                     onClick={() => {
                       dispatch(setAdmin(false));
                       dispatch(removeUserLogin());
+                      setShow(false);
                       dispatch(notifyUser("You Have been Logged out"));
                     }}
                   >

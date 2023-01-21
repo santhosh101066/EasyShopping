@@ -68,7 +68,7 @@ function Login({ setSignup }) {
           formData.current.password.setCustomValidity("");
         }}
       >
-        <input type={"email"} name="email" placeholder="Email" />
+        <input type={"email"} name="email" placeholder="Email" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" />
         <input type={"password"} name="password" placeholder="Password" />
         {invalid && (
           <span className="invalid">Invalid username or password</span>

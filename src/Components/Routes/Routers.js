@@ -10,6 +10,7 @@ import Order from "../Orders/Order";
 import AddtoCart from "../Cart/AddtoCart";
 import { useSelector } from "react-redux";
 import ManageOrders from "../Admin/ManageOrders/ManageOrders";
+import SearchPage from "../Search/SearchPage";
 
 function Routers(props) {
   const isLogin = useSelector((state) => state.Authentication.isLogin);
@@ -17,6 +18,7 @@ function Routers(props) {
   return (
     <Routes>
       <Route index element={<Homepage />}></Route>
+      <Route path="search" element={<SearchPage/>}></Route>
       <Route path="products/:type" element={<ProductPage />}></Route>
       <Route path="view/:productId" element={<DetailedProduct />}></Route>
       <Route
