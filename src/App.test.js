@@ -4,14 +4,13 @@ import { Provider } from "react-redux";
 import Store from "./Redux/Store/Store";
 import { act } from "react-dom/test-utils";
 
-
 test("renders category", async () => {
   render(
     <Provider store={Store}>
       <App />
     </Provider>
   );
-  expect( screen.getAllByText("Category")[0]).toBeInTheDocument();
+  expect(screen.getAllByText("Category")[0]).toBeInTheDocument();
 });
 
 test("renders product", async () => {
@@ -21,28 +20,36 @@ test("renders product", async () => {
     </Provider>
   );
 
-  const login=screen.getByText("Login")
-  act(()=>{
-    login.click()
-  })
-  
-  console.log(screen.getByPlaceholderText('Email'));
-
-  
+  const login = screen.getByText("Login");
+  act(() => {
+    setTimeout(() => {
+      login.click();
+      expect.any(screen.getByPlaceholderText("Email"));
+    }, 1000);
+  });
 });
 
-test ("navigate",async()=>{
+test("navigate", async () => {
   render(
     <Provider store={Store}>
       <App />
     </Provider>
   );
-  const mobile=await screen.findAllByText('Mobiles')
-  act(()=>{
+
+  const mobile = await screen.findAllByText("Mobiles");
+  act(() => {
     mobile[1].click();
-  //  setTimeout(async()=>{console.log(await screen.findAllByText('loading'));})
-  })
-  window.scrollTo = jest.fn()
-  console.log(await screen.findAllByText('Apple iPhone 12 (128GB) - Black'))
+  });
+  window.scrollTo = jest.fn();
+
+  const mobileProduct = await screen.findAllByText(
+    "Apple iPhone 12 (128GB) - Black"
+  );
   
-})
+  expect(mobileProduct[0]).toBeInTheDocument();
+  act(() => {
+    mobileProduct[0].click();
+  });
+ expect.any(await screen.findAllByText("Quantity"));
+});
+

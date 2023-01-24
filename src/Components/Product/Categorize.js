@@ -2,7 +2,7 @@ import React from "react";
 import Products from "./Products";
 
 function Categorize({ category, products,load }) {
-  return (
+   return (
     <div>
       <span className="home-lable">{category}</span>
       <div className="home-container">
@@ -11,7 +11,7 @@ function Categorize({ category, products,load }) {
             <Products 
               key={index}
               id={product.id}
-              title={product.title}
+              title={product.short_title || product.title}
               price={product.price}
               load={load}
             />
@@ -20,5 +20,6 @@ function Categorize({ category, products,load }) {
     </div>
   );
 }
+
 
 export default Categorize;
