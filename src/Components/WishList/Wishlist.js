@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { createRef, useCallback, useEffect, useState } from "react";
 import "../../CSS/Cart.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
@@ -14,9 +14,10 @@ function Wishlist(props) {
   const dispatch = useDispatch();
   const [error, setError] = useState(null);
   const [load,setLoad]=useState(false)
+  const ref=createRef()
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+    ref.current.scrollTo(0, 0);
+  }, [ref]);
 
   const wishlistLoader= useCallback(()=>{
     setLoad(true)
@@ -46,7 +47,7 @@ function Wishlist(props) {
   );
 
   return (
-    <div className="wish-list">
+    <div ref={ref} className="wish-list">
       <h1>
         Your Wish List <FontAwesomeIcon color="#ff007b" icon={faHeart} />
       </h1>

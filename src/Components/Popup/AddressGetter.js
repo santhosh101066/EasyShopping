@@ -2,6 +2,7 @@ import React, { createRef, useCallback, useState } from "react";
 import AxiosApi from "../../Api/AxiosApi";
 import { useDispatch } from "react-redux";
 import { notifyUser } from "../../Redux/Reducer/SendNotification";
+import { setCartNumber } from "../../Redux/Reducer/AuthKey";
 
 function AddressGetter({ p_id, quantity, cancel, list, reload }) {
   const [address, setAddress] = useState("");
@@ -17,6 +18,9 @@ function AddressGetter({ p_id, quantity, cancel, list, reload }) {
               cancel(true);
               dispatch(notifyUser("Your Orders Have been Placed"));
               reload()
+              AxiosApi.get("cartcount").then((res) => {
+                dispatch(setCartNumber(res.data.length));
+              });
             })
             .catch(console.log);
         } else {
@@ -27,6 +31,9 @@ function AddressGetter({ p_id, quantity, cancel, list, reload }) {
           }).then((res) => {
             cancel(false);
             dispatch(notifyUser("Your Order Have been Placed"));
+            AxiosApi.get("cartcount").then((res) => {
+              dispatch(setCartNumber(res.data.length));
+            });
           });
         }
       } else {

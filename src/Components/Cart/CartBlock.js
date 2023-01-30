@@ -1,31 +1,92 @@
-import React from "react";
+import React, { useCallback, useState } from "react";
 import PriceFormat from "../StringFormat/PriceFormat";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate } from "react-router-dom";
-import { SERVER } from "../../Api/AxiosApi";
+import AxiosApi, { SERVER } from "../../Api/AxiosApi";
 
-function CartBlock({ title, price, quantity = 1, id, removeFromCart }) {
+function CartBlock({
+  title,
+  price,
+  quantity = 1,
+  id,
+  removeFromCart,
+  maxQty,
+  cart_id,
+}) {
+
   const navigate = useNavigate();
+  const [qty, setQty] = useState(quantity);
+
+  const changeQuantity = useCallback(
+    (qty) => {
+      AxiosApi.put("addtocart/" + cart_id, {
+        id: cart_id,
+        p_id: id,
+        quantity: qty,
+      }).then(() => {
+        console.log("updated");
+      });
+    },
+    [cart_id, id]
+  );
+  const handleIncrement = useCallback(
+    (e) => {
+      e.stopPropagation();
+      setQty((val) => {
+        val = val + 1;
+        changeQuantity(val);
+        return val;
+      });
+    },
+    [changeQuantity]
+  );
+  const handleDecrement = useCallback(
+    (e) => {
+      e.stopPropagation();
+      setQty((val) => {
+        val = val - 1;
+        changeQuantity(val);
+        return val;
+      });
+    },
+    [changeQuantity]
+  );
+  const handleView = useCallback(() => {
+    navigate("/view/" + id);
+  }, [id, navigate]);
 
   return (
-    <div
-      className="cart-block"
-      onClick={() => {
-        navigate("/view/" + id);
-      }}
-    >
+    <div className="cart-block">
       <div className="cart-info">
-        <img src={`${SERVER}/assets/images/${id}.png`} alt="Product" />
-        <span className="title">{title}</span>
+        <img
+          onClick={handleView}
+          src={`${SERVER}/assets/images/${id}.png`}
+          alt="Product"
+        />
+        <span onClick={handleView} className="title">
+          {title}
+        </span>
       </div>
       <div className="cart-control">
-        <span>Quantity {quantity}</span>
+        <div className="cart-quantity">
+          <span>Quantity</span>
+          <div>
+            <button disabled={qty <= 1} onClick={handleDecrement}>
+              <b>-</b>
+            </button>
+            <span>{qty}</span>
+            <button disabled={qty >= maxQty} onClick={handleIncrement}>
+              <b>+</b>
+            </button>
+          </div>
+        </div>
         <span>
-          Price : <PriceFormat price={Number(price) * quantity} />
+          Price : <PriceFormat price={Number(price) * qty} />
         </span>
         <span>
           <button
+            className="delete"
             onClick={(e) => {
               removeFromCart(id);
               e.stopPropagation();

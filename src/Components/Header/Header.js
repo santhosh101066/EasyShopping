@@ -1,4 +1,4 @@
-import React, { Suspense, useEffect, useState } from "react";
+import React, { Suspense, createRef, useEffect, useState } from "react";
 import FullScreenLoader from "../LoadingAnimator/FullScreenLoader";
 import { useNavigate } from "react-router-dom";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
@@ -19,6 +19,7 @@ function Header() {
   const [toggleCategory, setToggleCategory] = useState(false);
   const [toggleProfile, setToggleProfile] = useState(false);
   const [getWidth, setWidth] = useState(false);
+  const comp = createRef();
   const login = useSelector((state) => state.loginBtn.openLogin);
   const userName = useSelector((state) => state.Authentication.name);
   const isAdmin = useSelector((state) => state.Authentication.isAdmin);
@@ -38,11 +39,11 @@ function Header() {
     return () => {
       window.removeEventListener("resize", widthManage);
     };
-  }, []);
+  }, [comp]);
 
   return (
     <header className={show ? "header show-content" : "header hide-content"}>
-      <nav >
+      <nav>
         <ul className="head-ul">
           <li className="app-title">
             <div
@@ -186,7 +187,6 @@ function Header() {
                 className="category"
                 onClick={() => {
                   setToggleProfile(!toggleProfile);
-                 
                 }}
               >
                 <li>

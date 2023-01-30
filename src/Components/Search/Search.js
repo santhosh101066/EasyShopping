@@ -8,7 +8,7 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 function Search(props) {
   const [data, setData] = useState([]);
   const [notFound, setNotFound] = useState(false);
-  const [dropdown,Setdropdown]=useState(false)
+  const [dropdown, Setdropdown] = useState(false);
   const [search, setSearch] = useState("");
   const navigate = useNavigate();
   const handleSearch = useCallback((e) => {
@@ -17,7 +17,7 @@ function Search(props) {
     if (e.target.value.length > 0) {
       AxiosApi.get("search/" + e.target.value).then((res) => {
         setData(res.data);
-        Setdropdown(true)
+        Setdropdown(true);
         res.data.length === 0 && setNotFound(true);
       });
     } else {
@@ -29,7 +29,7 @@ function Search(props) {
     (id) => {
       navigate("view/" + id);
       setData([]);
-      Setdropdown(false)
+      Setdropdown(false);
     },
     [navigate]
   );
@@ -45,9 +45,11 @@ function Search(props) {
         />
         <button
           onClick={() => {
-            navigate("search?q=" + search);
-            Setdropdown(false)
-            setNotFound(false);
+            if (search.length > 0) {
+              navigate("search?q=" + search);
+              Setdropdown(false);
+              setNotFound(false);
+            }
           }}
         >
           <FontAwesomeIcon icon={faSearch} />
@@ -56,7 +58,7 @@ function Search(props) {
       {dropdown && (
         <div className="search-dropdown">
           <ul>
-            {data.slice(0,10).map((val) => (
+            {data.slice(0, 10).map((val) => (
               <li key={val.id} onClick={() => handleClick(val.id)}>
                 {val.short_title}
               </li>

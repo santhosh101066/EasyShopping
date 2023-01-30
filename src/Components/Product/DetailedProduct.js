@@ -6,20 +6,20 @@ import FullScreenLoader from "../LoadingAnimator/FullScreenLoader";
 import { useDispatch } from "react-redux";
 import { notifyUserError } from "../../Redux/Reducer/SendNotification";
 import Controls from "./Controls";
-import '../../CSS/Auth.css'
+import "../../CSS/Auth.css";
 import "../../CSS/DetailedView.css";
 
 function DetailedProduct(props) {
   let [image, setImage] = useState();
   let [datas, setDatas] = useState();
   let [images, setImages] = useState([]);
-  
+
   let [error, setError] = useState();
   const param = useParams();
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const handleClickImage = useCallback((e) => {
-    setImage(e.target.src);
+    e.target.src && setImage(e.target.src);
   }, []);
 
   const loadContent = useCallback(() => {
@@ -46,8 +46,10 @@ function DetailedProduct(props) {
         setError(null);
       })
       .catch((err) => {
-        setError(err.response?err.response.statusText:err.message);
-        dispatch(notifyUserError(err.response?err.response.statusText:err.message))
+        setError(err.response ? err.response.statusText : err.message);
+        dispatch(
+          notifyUserError(err.response ? err.response.statusText : err.message)
+        );
       });
   }, [dispatch, param.productId]);
 
@@ -57,28 +59,35 @@ function DetailedProduct(props) {
 
   return datas ? (
     <div className="detailed-product">
-     <div className="detailed-images">
-     <div className="thumb-images">
-        <div className="thumbs" onClick={handleClickImage}>
-          {/* thumb img */}
-          <img src={`${SERVER}/assets/images/${datas.id}.png`} alt="" />
-          {images}
+      <div className="detailed-images">
+        <div className="thumb-images">
+          <div className="thumbs" onClick={handleClickImage}>
+            {/* thumb img */}
+            <img src={`${SERVER}/assets/images/${datas.id}.png`} alt="" />
+            {images}
+          </div>
+        </div>
+
+        <div className="product-image">
+          {/* Product img */}
+          <img src={image} alt="" />
         </div>
       </div>
-
-      <div className="product-image">
-        {/* Product img */}
-        <img src={image} alt="" />
-      </div>
-     </div>
       <div className="product-details">
         <h2>{datas.title}</h2>
         <h4>More details</h4>
         <ul>
-          {datas.more_details&& datas.more_details.split("\n").map((val,index) => val && <li key={index}>{val}</li>)}
+          {datas.more_details &&
+            datas.more_details
+              .split("\n")
+              .map((val, index) => val && <li key={index}>{val}</li>)}
         </ul>
       </div>
-      <Controls price={datas.price} getQuantity={datas.quantity} id={datas.id}/>
+      <Controls
+        price={datas.price}
+        getQuantity={datas.quantity}
+        id={datas.id}
+      />
     </div>
   ) : error ? (
     <PageError error={error} loadData={loadContent} />

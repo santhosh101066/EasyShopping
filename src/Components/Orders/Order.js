@@ -10,7 +10,7 @@ function Order(props) {
   const isLogin = useSelector((state) => state.Authentication.isLogin);
   const loader = useCallback(() => {
     if (isLogin) {
-      AxiosApi.get("orders").then((res) => setList(res.data));
+      AxiosApi.get("orders").then((res) => setList(res.data.reverse()));
     }
   }, [isLogin]);
   useEffect(() => {

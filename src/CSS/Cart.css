@@ -32,11 +32,12 @@
 .cart-control {
   display: flex;
   justify-content: space-around;
+  align-items: center;
 }
 .cart-control span{
   width: max-content;
 }
-.cart-control button {
+.cart-control .delete {
   width: max-content;
   border-radius: 5px;
   height: 30px;
@@ -44,6 +45,41 @@
   background-color: rgba(0, 0, 0, 0);
   border: 2px rgba(49, 15, 129, 0.334) solid;
   transition: background-color 0.25s ease-out;
+}
+
+.cart-quantity{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 100%;
+  padding: 10px;
+}
+
+.cart-quantity span{
+  padding: 10px;
+}
+.cart-quantity button{
+  width: 30px;
+  border-radius: 5px;
+  height: 30px;
+  color: rgb(255, 67, 67);
+  background-color: rgba(0, 0, 0, 0);
+  border: 2px rgba(49, 15, 129, 0.334) solid;
+  transition: background-color 0.25s ease-out;
+}
+.cart-quantity div{
+  display: flex;
+  align-items: center;
+}
+.cart-quantity button:hover{
+  color: white;
+}
+.cart-quantity button:disabled{
+  background-color: rgb(191, 191, 191);
+}
+.cart-quantity button:active {
+  color: red;
+  background-color: rgba(207, 207, 207, 0.658);
 }
 
 .cart-control button:hover {

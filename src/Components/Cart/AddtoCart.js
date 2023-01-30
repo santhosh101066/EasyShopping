@@ -3,7 +3,7 @@ import PageError from "../Alert.js/PageError";
 import Subtotal from "../Cart/Subtotal";
 import AxiosApi from "../../Api/AxiosApi";
 import FullScreenLoader from "../LoadingAnimator/FullScreenLoader";
-import React, { useCallback, useEffect, useState } from "react";
+import React, { createRef, useCallback, useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch } from "react-redux";
@@ -15,9 +15,12 @@ function AddtoCart(props) {
   const dispatch = useDispatch();
   const [error, setError] = useState(null);
   const [load, setLoad] = useState(false);
+  const comp=createRef()
+
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+    comp.current.scrollTo(0, 0);
+  }, [comp]);
+
   const cartLoader = useCallback(() => {
     setLoad(true);
     AxiosApi.get("cartpage")
@@ -34,6 +37,7 @@ function AddtoCart(props) {
   useEffect(() => {
     cartLoader();
   }, [cartLoader]);
+
   const removeFromCart = useCallback(
     (id) => {
       AxiosApi.delete("cart/" + id).then(() => {
@@ -47,7 +51,7 @@ function AddtoCart(props) {
     [dispatch]
   );
   return (
-    <div className="wish-list">
+    <div ref={comp} className="wish-list">
       <h1>
         Shopping Cart <FontAwesomeIcon icon={faShoppingCart} />
       </h1>
@@ -59,8 +63,10 @@ function AddtoCart(props) {
             price={val.price}
             quantity={val.quantity}
             id={val.id}
+            cart_id={val.cart_id}
             title={val.title}
             removeFromCart={removeFromCart}
+            maxQty={Number(val.maxQty)}
           />
         ))
       ) : (
