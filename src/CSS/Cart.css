@@ -25,6 +25,7 @@
 }
 .cart-block .title {
   text-align: justify;
+  align-self: center;
 }
 .cart-info {
   display: flex;

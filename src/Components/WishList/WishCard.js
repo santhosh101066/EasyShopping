@@ -24,7 +24,7 @@ function WishCard({ title, price, id, removeFromlist }) {
           Price : <PriceFormat price={price} />
         </span>
         <span>
-          <button
+          <button className="delete"
             onClick={(e) => {
               removeFromlist(id);
               e.stopPropagation();

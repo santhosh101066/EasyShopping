@@ -151,7 +151,7 @@ function Controls({ getQuantity, id, price }) {
           </span>
         )}
 
-        {Number(getQuantity) > 1 ? (
+        {Number(getQuantity) > 0 ? (
           !isAdmin && (
             <>
               <button onClick={Add2Cart}>

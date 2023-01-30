@@ -11,6 +11,7 @@ import AddtoCart from "../Cart/AddtoCart";
 import { useSelector } from "react-redux";
 import ManageOrders from "../Admin/ManageOrders/ManageOrders";
 import SearchPage from "../Search/SearchPage";
+import PageNotFound from "../Alert.js/PageNotFound";
 
 function Routers(props) {
   const isLogin = useSelector((state) => state.Authentication.isLogin);
@@ -62,7 +63,7 @@ function Routers(props) {
           </ProtectedRoute>
         }
       />
-      <Route path="*" element={<div>Not Found</div>} />
+      <Route path="*" element={<PageNotFound/>} />
     </Routes>
   );
 }
