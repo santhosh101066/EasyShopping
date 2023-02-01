@@ -1,53 +1,55 @@
-.login-text select, .login-text textarea{
-    display: block;
-    font-size: medium;
-    margin: auto;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    height: 40px;
-    width: 100%;
-    background-color: rgba(43, 46, 74, 0);
-    border-radius: 10px;
-    border: 2px solid rgb(76, 80, 118);
-    color: white;
-    padding: 5px;
-    outline-color: rgb(76, 80, 118);
-    border-color: rgb(76, 80, 118);
+.login-text select,
+.login-text textarea {
+  display: block;
+  font-size: medium;
+  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  height: 40px;
+  width: 100%;
+  background-color: rgba(43, 46, 74, 0);
+  border-radius: 10px;
+  border: 2px solid rgb(76, 80, 118);
+  color: white;
+  padding: 5px;
+  outline-color: rgb(76, 80, 118);
+  border-color: rgb(76, 80, 118);
 }
-.login-text option{
-   color: black;
+.login-text option {
+  color: black;
 }
 
-.login-text select:invalid, .login-text textarea:invalid{
-    outline: 2px solid rgb(241, 124, 124);
+.login-text select:invalid,
+.login-text textarea:invalid {
+  outline: 2px solid rgb(241, 124, 124);
 }
-.login h3{
-    text-align: center;
+.login h3 {
+  text-align: center;
 }
-.login-text table{
-    margin: auto;
+.login-text table {
+  margin: auto;
 }
-.save-cancel{
-    display: flex;
+.save-cancel {
+  display: flex;
 }
 .login button {
-    display: block;
-    margin: auto;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    height: 40px;
-    padding: 10px;
-    font-size: medium;
-    border-radius: 7px;
-    background-color: rgb(123, 194, 16);
-    background-image: linear-gradient(180deg, #7bc210 50%, #609511);
-    border: none;
-    width: 70px;
-  }
-  .login button:hover {
-    background-color: rgb(123, 194, 16);
-    background-image: linear-gradient(180deg, #7bc210, #83b636);
-  }
-  .login button:active {
-    background-image: linear-gradient(180deg, #60970c, #85cd19);
-  }
+  display: block;
+  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  height: 40px;
+  padding: 10px;
+  font-size: medium;
+  border-radius: 7px;
+  background-color: rgb(123, 194, 16);
+  background-image: linear-gradient(180deg, #7bc210 50%, #609511);
+  border: none;
+  width: 70px;
+}
+.login button:hover {
+  background-color: rgb(123, 194, 16);
+  background-image: linear-gradient(180deg, #7bc210, #83b636);
+}
+.login button:active {
+  background-image: linear-gradient(180deg, #60970c, #85cd19);
+}

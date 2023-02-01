@@ -68,6 +68,6 @@ export const category = [
   { name: "Laptops" ,id:'laptop', icon: "/assets/images/laptopicon.png" },
   { name: "Mobiles", id:'mobile',icon: "/assets/images/mobileicon.png" },
   { name: "Televisions",id:'television', icon: "/assets/images/tvicon.png" },
-  { name: "Headphones",id:'headphone', icon: "/assets/images/headphonesicon.png" },
+  { name: "Headphones",id:'headphone', icon: "/assets/images/headphonesicon.png" },  
 ];
 

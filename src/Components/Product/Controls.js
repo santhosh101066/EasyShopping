@@ -1,3 +1,15 @@
+import React, { useEffect, useState } from "react";
+import PriceFormat from "../StringFormat/PriceFormat";
+import AxiosApi from "../../Api/AxiosApi";
+import AddressGetter from "../Popup/AddressGetter";
+import { useDispatch, useSelector } from "react-redux";
+import { setLogin } from "../../Redux/Reducer/LoginBtn";
+import { setCartNumber } from "../../Redux/Reducer/AuthKey";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  notifyUser,
+  notifyUserError,
+} from "../../Redux/Reducer/SendNotification";
 import {
   faAdd,
   faCartShopping,
@@ -5,18 +17,6 @@ import {
   faMinus,
   faPlus,
 } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useEffect, useState } from "react";
-import PriceFormat from "../StringFormat/PriceFormat";
-import AxiosApi from "../../Api/AxiosApi";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  notifyUser,
-  notifyUserError,
-} from "../../Redux/Reducer/SendNotification";
-import { setLogin } from "../../Redux/Reducer/LoginBtn";
-import AddressGetter from "../Popup/AddressGetter";
-import { setCartNumber } from "../../Redux/Reducer/AuthKey";
 
 function Controls({ getQuantity, id, price }) {
   let [quantity, setQuantity] = useState(1);
@@ -158,7 +158,11 @@ function Controls({ getQuantity, id, price }) {
                 {cart ? "Remove from cart" : "Add to Cart"}{" "}
                 <FontAwesomeIcon icon={faAdd} />
               </button>
-              <button onClick={() => setOrder(true)}>
+              <button
+                onClick={() =>
+                  isLogin ? setOrder(true) : dispatch(setLogin(true))
+                }
+              >
                 Buy Now <FontAwesomeIcon icon={faCartShopping} />
               </button>
             </>

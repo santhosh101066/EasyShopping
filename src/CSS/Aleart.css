@@ -1,21 +1,21 @@
-.not-found h3{
-    text-align: center;
+.not-found h3 {
+  text-align: center;
 }
-.not-found button{
-    display: block;
-    color: white;
-    height: 30px;
-    width: 30px;
-    padding: 0%;
-    margin: auto;
-    background-color: #554994;
-    border-radius: 5px;
-    border: 1px solid white;
+.not-found button {
+  display: block;
+  color: white;
+  height: 30px;
+  width: 30px;
+  padding: 0%;
+  margin: auto;
+  background-color: #554994;
+  border-radius: 5px;
+  border: 1px solid white;
 }
 
-.not-found button:hover{
-    background-color: #6f62af;
+.not-found button:hover {
+  background-color: #6f62af;
 }
-.not-found{
-    margin-bottom:20px ;
+.not-found {
+  margin-bottom: 20px;
 }

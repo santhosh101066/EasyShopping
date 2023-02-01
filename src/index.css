@@ -9,9 +9,7 @@ body {
   background-image: linear-gradient(60deg, #2b2e4a 0%, #6a70b3 100%); */
   /* background-color:   #e4e4ed; */
   /* background-color: #FFBCD1; */
- background-color: #ffbcd133;
-  
-
+  background-color: #ffbcd133;
 }
 
 code {
@@ -19,7 +17,7 @@ code {
     monospace;
 }
 
-html{
+html {
   min-height: -webkit-fill-available;
   min-height: -moz-available;
   min-height: stretch;

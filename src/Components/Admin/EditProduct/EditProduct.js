@@ -1,21 +1,24 @@
 import React, { useCallback, useEffect, useState } from "react";
-import "../../../CSS/Auth.css";
-import "./Edit.css";
 import AxiosApi from "../../../Api/AxiosApi";
 import { useDispatch } from "react-redux";
 import {
   notifyUser,
   notifyUserError,
 } from "../../../Redux/Reducer/SendNotification";
+import "../../../CSS/Auth.css";
+import "./Edit.css";
+
 function EditProduct({ cancel, id, load }) {
   const [data, setData] = useState();
   const [filled, setNotFilled] = useState(false);
   const dispatch = useDispatch();
+
   useEffect(() => {
     AxiosApi.get("product/detailed/" + id).then((res) => {
       setData(res.data);
     });
   }, [id]);
+
   const handleSave = useCallback(() => {
     if (!filled) {
       if (window.confirm("Are you sure to update details")) {
@@ -38,6 +41,7 @@ function EditProduct({ cancel, id, load }) {
       return val;
     });
   }, []);
+
   return (
     data && (
       <div className="auth">

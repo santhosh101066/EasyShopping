@@ -45,11 +45,10 @@ test("navigate", async () => {
   const mobileProduct = await screen.findAllByText(
     "Apple iPhone 12 (128GB) - Black"
   );
-  
+
   expect(mobileProduct[0]).toBeInTheDocument();
   act(() => {
     mobileProduct[0].click();
   });
- expect.any(await screen.findAllByText("Quantity"));
+  expect.any(await screen.findAllByText("Quantity"));
 });
-

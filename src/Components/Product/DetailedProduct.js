@@ -13,7 +13,6 @@ function DetailedProduct(props) {
   let [image, setImage] = useState();
   let [datas, setDatas] = useState();
   let [images, setImages] = useState([]);
-
   let [error, setError] = useState();
   const param = useParams();
   const dispatch = useDispatch();

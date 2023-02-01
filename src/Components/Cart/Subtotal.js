@@ -1,8 +1,8 @@
-import { faShoppingBag } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
 import PriceFormat from "../StringFormat/PriceFormat";
 import AddressGetter from "../Popup/AddressGetter";
+import { faShoppingBag } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function Subtotal({ data, reload }) {
   const [total, setTotal] = useState(0);

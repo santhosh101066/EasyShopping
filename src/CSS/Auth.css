@@ -9,7 +9,7 @@
   animation: login-intro 0.25s normal 1 ease-out;
 }
 .login {
-  background-color:#101549;
+  background-color: #101549;
   width: 600px;
   display: block;
   position: absolute;
@@ -22,13 +22,13 @@
   color: white;
   padding: 10px;
   overflow: auto;
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.292) ;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.292);
 }
 .brand {
   width: fit-content;
   margin: auto;
 }
-.brand div{
+.brand div {
   margin-top: 10px;
 }
 .brand img {
@@ -138,9 +138,9 @@
   display: block;
   justify-content: space-around;
 }
-.signup-text .cover-me{
+.signup-text .cover-me {
   display: grid;
-  grid-template-columns: repeat(auto-fit,250px);
+  grid-template-columns: repeat(auto-fit, 250px);
   justify-content: space-around;
   justify-items: center;
 }

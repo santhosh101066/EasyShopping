@@ -9,8 +9,8 @@ import "../../../CSS/AddProduct.css";
 
 function AddProduct() {
   const FormDatas = createRef();
-
   const dispatch = useDispatch();
+  
   function CreateProduct(e) {
     const data = new FormData(FormDatas.current);
     AxiosApi.post("newproduct", data, {

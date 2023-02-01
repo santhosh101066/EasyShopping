@@ -1,5 +1,4 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom";
 import Homepage from "../Homepage/Homepage";
 import ProductPage from "../Product/ProductPage";
 import DetailedProduct from "../Product/DetailedProduct";
@@ -8,14 +7,16 @@ import Wishlist from "../WishList/Wishlist";
 import AddProduct from "../Admin/AddProduct/AddProduct";
 import Order from "../Orders/Order";
 import AddtoCart from "../Cart/AddtoCart";
-import { useSelector } from "react-redux";
 import ManageOrders from "../Admin/ManageOrders/ManageOrders";
 import SearchPage from "../Search/SearchPage";
 import PageNotFound from "../Alert.js/PageNotFound";
+import { Route, Routes } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 function Routers(props) {
   const isLogin = useSelector((state) => state.Authentication.isLogin);
   const isAdmin = useSelector((state) => state.Authentication.isAdmin);
+  
   return (
     <Routes>
       <Route index element={<Homepage />}></Route>

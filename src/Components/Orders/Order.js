@@ -1,21 +1,26 @@
 import React, { useCallback, useEffect, useState } from "react";
-import "../../CSS/Orders.css";
 import { useSelector } from "react-redux";
 import AxiosApi, { SERVER } from "../../Api/AxiosApi";
 import PriceFormat from "../StringFormat/PriceFormat";
 import { useNavigate } from "react-router-dom";
+import "../../CSS/Orders.css";
+
 function Order(props) {
+
   const [list, setList] = useState([]);
   const navigate = useNavigate();
   const isLogin = useSelector((state) => state.Authentication.isLogin);
+
   const loader = useCallback(() => {
     if (isLogin) {
       AxiosApi.get("orders").then((res) => setList(res.data.reverse()));
     }
   }, [isLogin]);
+
   useEffect(() => {
     loader();
   }, [isLogin, loader]);
+  
   return (
     <div>
       {list.map((val, index) => (

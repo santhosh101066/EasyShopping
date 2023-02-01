@@ -1,5 +1,4 @@
 import React, { createRef, useCallback, useEffect, useState } from "react";
-import "../../CSS/Cart.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import WishCard from "./WishCard";
@@ -8,6 +7,7 @@ import { useDispatch } from "react-redux";
 import { notifyUser } from "../../Redux/Reducer/SendNotification";
 import PageError from "../Alert.js/PageError";
 import FullScreenLoader from "../LoadingAnimator/FullScreenLoader";
+import "../../CSS/Cart.css";
 
 function Wishlist(props) {
   const [list, setList] = useState([]);
@@ -15,6 +15,7 @@ function Wishlist(props) {
   const [error, setError] = useState(null);
   const [load,setLoad]=useState(false)
   const ref=createRef()
+
   useEffect(() => {
     ref.current.scrollTo(0, 0);
   }, [ref]);

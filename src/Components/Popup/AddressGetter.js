@@ -5,9 +5,11 @@ import { notifyUser } from "../../Redux/Reducer/SendNotification";
 import { setCartNumber } from "../../Redux/Reducer/AuthKey";
 
 function AddressGetter({ p_id, quantity, cancel, list, reload }) {
+
   const [address, setAddress] = useState("");
   const textarea = createRef();
   const dispatch = useDispatch();
+
   const handleInput = useCallback(
     (e) => {
       e.preventDefault();
@@ -42,6 +44,7 @@ function AddressGetter({ p_id, quantity, cancel, list, reload }) {
     },
     [address, cancel, dispatch, list, p_id, quantity, reload, textarea]
   );
+  
   function handleChanges(e) {
     textarea.current.setCustomValidity("");
     setAddress(e.target.value);

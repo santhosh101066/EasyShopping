@@ -172,24 +172,24 @@
   display: flex;
   justify-content: space-around;
 }
-.product-alert{
+.product-alert {
   color: red;
   font-weight: 500;
 }
-.detailed-images{
+.detailed-images {
   display: flex;
 }
 
-@media only screen and (max-width: 780px){
+@media only screen and (max-width: 780px) {
   .detailed-product {
     flex-direction: column;
     padding: 10px;
   }
-  .detailed-images{
+  .detailed-images {
     width: 100%;
     margin: auto;
   }
-  .product-image{
+  .product-image {
     width: max-content;
     min-width: 70%;
   }

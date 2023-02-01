@@ -1,67 +1,66 @@
-.order{
-    display: flex;
-    justify-content: space-between;
-    margin-left: 10px;
-    margin-right: 10px;
-    align-items: center;
-    border-bottom: 1px solid gray;
-    padding: 10px;
+.order {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 10px;
+  margin-right: 10px;
+  align-items: center;
+  border-bottom: 1px solid gray;
+  padding: 10px;
 }
-.order img{
-    width: 100px;
-    height: 100px;
-    object-fit: contain;
+.order img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
 }
-.order button{
-    height: fit-content;
+.order button {
+  height: fit-content;
 }
-.order h3{
-    padding: 10px;
-    flex-grow: .5;
-    margin: 0;
+.order h3 {
+  padding: 10px;
+  flex-grow: 0.5;
+  margin: 0;
 }
-.order-info{
-    gap: 10px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+.order-info {
+  gap: 10px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
-.order-info div{
-    width: max-content;
+.order-info div {
+  width: max-content;
 }
-.order-info *{
-    padding: 5px;
-    margin: 5px;
-    width: max-content;
+.order-info * {
+  padding: 5px;
+  margin: 5px;
+  width: max-content;
 }
-.order-main{
-    display: flex;
-    align-items: center;
+.order-main {
+  display: flex;
+  align-items: center;
 }
-.order-info button{
-    background-color: rgb(255, 145, 0);
-    border: none;
-    color: white;
-    border-radius: 5px;
-    text-shadow: 0 0 10px rgb(255, 0, 0);
-}  
-.order-info button:hover{
-    background-color: rgb(201, 114, 0);
-}  
-.order-info button:active{
-    background-color: rgb(152, 86, 0);
-}  
+.order-info button {
+  background-color: rgb(255, 145, 0);
+  border: none;
+  color: white;
+  border-radius: 5px;
+  text-shadow: 0 0 10px rgb(255, 0, 0);
+}
+.order-info button:hover {
+  background-color: rgb(201, 114, 0);
+}
+.order-info button:active {
+  background-color: rgb(152, 86, 0);
+}
 
-@media only screen and (max-width: 780px){
-    .order{
-        flex-direction: column;
-    }
-    .order-main{
-        width: 100%;
-    }
-    .order-info{
-        display: flex;
-        flex-direction: column;
-    }
-
+@media only screen and (max-width: 780px) {
+  .order {
+    flex-direction: column;
+  }
+  .order-main {
+    width: 100%;
+  }
+  .order-info {
+    display: flex;
+    flex-direction: column;
+  }
 }
