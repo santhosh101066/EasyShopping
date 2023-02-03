@@ -4,7 +4,6 @@ import ProductPage from "../Product/ProductPage";
 import DetailedProduct from "../Product/DetailedProduct";
 import ProtectedRoute from "../../ProtectedRoute/ProtectedRoute";
 import Wishlist from "../WishList/Wishlist";
-import AddProduct from "../Admin/AddProduct/AddProduct";
 import Order from "../Orders/Order";
 import AddtoCart from "../Cart/AddtoCart";
 import ManageOrders from "../Admin/ManageOrders/ManageOrders";
@@ -48,14 +47,14 @@ function Routers(props) {
         }
       />
 
-      <Route
+      {/* <Route
         path="addproduct"
         element={
           <ProtectedRoute isLogin={isAdmin}>
             <AddProduct />
           </ProtectedRoute>
         }
-      />
+      /> */}
       <Route
         path="order"
         element={

@@ -19,6 +19,7 @@
   padding: 10px;
   flex-grow: 0.5;
   margin: 0;
+  font-size: medium;
 }
 .order-info {
   gap: 10px;

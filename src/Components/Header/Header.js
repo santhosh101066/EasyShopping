@@ -9,6 +9,7 @@ import { notifyUser } from "../../Redux/Reducer/SendNotification";
 import { setLogin } from "../../Redux/Reducer/LoginBtn";
 import { category } from "../../Data/ProductData";
 import Search from "../Search/Search";
+import AddProduct from "../Admin/AddProduct/AddProduct";
 
 const Authenticate = React.lazy(() => import("../LogIn/Authenticate"));
 
@@ -18,6 +19,7 @@ function Header() {
   const [show, setShow] = useState(false);
   const [toggleCategory, setToggleCategory] = useState(false);
   const [toggleProfile, setToggleProfile] = useState(false);
+  const [addProduct,setAddProduct]=useState(false)
   const [getWidth, setWidth] = useState(false);
   const comp = createRef();
   const login = useSelector((state) => state.loginBtn.openLogin);
@@ -169,7 +171,7 @@ function Header() {
             <>
               <li
                 onClick={() => {
-                  navigate("addproduct");
+                  setAddProduct(true)
                   setShow(false);
                 }}
               >
@@ -226,6 +228,7 @@ function Header() {
       <Suspense fallback={<FullScreenLoader />}>
         {login && <Authenticate setLogin={setLogin} />}
       </Suspense>
+      {addProduct&&<AddProduct close={setAddProduct}/>}
     </header>
   );
 }

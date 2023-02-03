@@ -7,7 +7,8 @@
   background-color: white;
   margin: 15px;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(224, 112, 149, 0.606);
+  /* box-shadow: 0 0 10px rgba(224, 112, 149, 0.606); */
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
   transition: scale 0.25s ease-in;
 }
 .cart-block:hover {
@@ -35,14 +36,16 @@
   justify-content: space-around;
   align-items: center;
 }
-.cart-control span {
-  width: max-content;
+
+.cart-price{
+  width: 180px;
 }
+
 .cart-control .delete {
   width: max-content;
   border-radius: 5px;
   height: 30px;
-  color: rgb(255, 67, 67);
+  color: #ff9900;
   background-color: rgba(0, 0, 0, 0);
   border: 2px rgba(49, 15, 129, 0.334) solid;
   transition: background-color 0.25s ease-out;
@@ -63,7 +66,7 @@
   width: 30px;
   border-radius: 5px;
   height: 30px;
-  color: rgb(255, 67, 67);
+  color:black;
   background-color: rgba(0, 0, 0, 0);
   border: 2px rgba(49, 15, 129, 0.334) solid;
   transition: background-color 0.25s ease-out;
@@ -76,10 +79,10 @@
   color: white;
 }
 .cart-quantity button:disabled {
-  background-color: rgb(191, 191, 191);
+  background-color: rgb(230, 230, 230);
 }
 .cart-quantity button:active {
-  color: red;
+  color:#ff9800;
   background-color: rgba(207, 207, 207, 0.658);
 }
 
@@ -91,12 +94,15 @@
 }
 
 .wish-list {
-  color: rgb(61 50 178);
+  color: #09009f;
 }
 .wish-list h1 {
   margin: 0%;
-  padding-top: 5px;
-  text-shadow: 0 1px 5px rgba(20, 39, 93, 0.257);
+  padding: 5px;
+  padding-bottom: 20px;
+}
+.wish-list h4{
+  text-align: center;
 }
 
 .subtotal {
@@ -110,17 +116,18 @@
 }
 .subtotal .info button {
   margin-top: 5px;
-  background-color: rgb(255, 255, 138);
+  /* background-color: rgb(255, 255, 138); */
+  background-color: #ff9800;
   height: 40px;
   border-radius: 20px;
   width: 100%;
   border: none;
 }
 .subtotal .info button:hover {
-  background-color: rgb(205, 205, 0);
+  background-color:  #ffb23e;
 }
 .subtotal .info button:active {
-  background-color: rgb(255, 255, 0);
+  background-color:  #ffd18d;
 }
 @media only screen and (max-width: 780px) {
   .cart-block {
@@ -128,5 +135,8 @@
   }
   .cart-control {
     margin: 10px;
+  }
+  .wish-list h1{
+    padding-bottom: 0px;
   }
 }

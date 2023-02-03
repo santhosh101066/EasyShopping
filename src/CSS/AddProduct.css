@@ -1,4 +1,4 @@
-.add-product * {
+/* .add-product * {
   display: block;
   margin: auto;
   margin-top: 3px;
@@ -26,4 +26,84 @@
 }
 .add-product label {
   font-size: small;
+} */
+
+.add-product{
+  background-color: #101549;
+  width: 600px;
+  display: block;
+  max-height: 90%;
+  position: absolute;
+  left: 50%;
+  top:50%;
+  transform: translate(-50%,-50%);
+  max-width: 95%;
+  border-radius: 10px;
+  color: white;
+  padding: 10px;
+  overflow: auto;
+  margin: auto;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.292);
+}
+.addproduct-align{
+  margin-top: 20px;
+}
+.addproduct-align input, .addproduct-align textarea,.addproduct-align select {
+  display: block;
+  font-size: medium;
+  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  height: 30px;
+  width: 50%;
+  background-color: rgba(43, 46, 74, 0);
+  border-radius: 10px;
+  border: 2px solid rgb(76, 80, 118);
+  color: white;
+  padding: 5px;
+  outline-color: rgb(76, 80, 118);
+  border-color: rgb(76, 80, 118);
+}
+.addproduct-align input:focus {
+  outline: 2px solid rgb(134, 138, 172);
+}
+.addproduct-align input::placeholder,.addproduct-align textarea::placeholder, .addproduct-align select::placeholder {
+  color: rgb(129, 135, 196);
+}
+.addproduct-align input:invalid ,.addproduct-align textarea:invalid ,.addproduct-align select:invalid {
+  outline: 2px solid rgb(241, 124, 124);
+}
+.addproduct-align button{
+  display: block;
+  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  height: 40px;
+  padding: 10px;
+  font-size: medium;
+  border-radius: 7px;
+  background-color: rgb(123, 194, 16);
+  background-image: linear-gradient(180deg, #7bc210 50%, #609511);
+  border: none;
+}
+.addproduct-align input::-webkit-file-upload-button{
+  height: 30px;
+  font-size: medium;
+  border-radius: 7px;
+  background-color: rgb(123, 194, 16);
+  background-image: linear-gradient(180deg, #7bc210 50%, #609511);
+  border: none;
+}
+.addproduct-align option{
+  color: black;
+}
+.addproduct-align select{
+  height: 40px;
+}
+.add-product h3{
+  text-align: center;
+}
+.addproduct-align label{
+  display: block;
+  text-align: center;
 }

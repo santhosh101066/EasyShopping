@@ -81,7 +81,7 @@ function CartBlock({
             </button>
           </div>
         </div>
-        <span>
+        <span className="cart-price">
           Price : <PriceFormat price={Number(price) * qty} />
         </span>
         <span>

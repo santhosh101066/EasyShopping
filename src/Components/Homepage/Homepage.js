@@ -6,7 +6,7 @@ function Homepage() {
   return (
     <div>
       <Carousels />
-      <h2>Category</h2>
+      <h2 style={{paddingLeft:'10px'}}>Category</h2>
       <Category />
     </div>
   );

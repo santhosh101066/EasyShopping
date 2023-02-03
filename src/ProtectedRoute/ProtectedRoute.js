@@ -1,11 +1,12 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setLogin } from "../Redux/Reducer/LoginBtn";
 import { notifyUser } from "../Redux/Reducer/SendNotification";
 import { useEffect } from "react";
 import { Navigate } from "react-router-dom";
 
-function ProtectedRoute({ children ,isLogin }) {
+function ProtectedRoute({ children, isLogin }) {
   const dispatch = useDispatch();
+  const onLoading = useSelector((state) => state.Authentication.initilize);
   useEffect(() => {
     if (!isLogin) {
       dispatch(setLogin(true));
@@ -15,7 +16,7 @@ function ProtectedRoute({ children ,isLogin }) {
     }
   }, [dispatch, isLogin]);
 
-  return isLogin ? children :<Navigate to={'/'}/>;
+  return isLogin ? children : !onLoading && <Navigate to={"/"} />;
 }
 
 export default ProtectedRoute;

@@ -1,5 +1,8 @@
 .App {
-  margin-top: 85px;
+  /* padding-top: 85px; */
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 .header {
   color: white;
@@ -9,7 +12,7 @@
   width: 100%;
   /* background-color:  rgb(25, 14, 95);  */
   background-color: #554994;
-  box-shadow: 0 0 50px rgba(255, 0, 247, 0.409);
+  /* box-shadow: 0 0 50px rgba(255, 0, 247, 0.409); */
   height: 60px;
   align-items: center;
   z-index: 3;
@@ -153,6 +156,7 @@
   position: fixed;
   transform: translateY(5%);
   right: 2%;
+  top: 85px;
   color: white;
   padding-left: 3px;
   padding-right: 3px;
@@ -194,10 +198,10 @@
 .footer {
   color: white;
   background-color: rgb(18, 19, 33);
-  position: relative;
   width: 100%;
-  bottom: 100%;
+  min-height: 100px;
   height: 100px;
+  margin-top: auto;
 }
 .footer span {
   display: block;
@@ -219,6 +223,10 @@
 }
 .cart-number span {
   font-size: x-small;
+}
+
+.page-alignment{
+  padding-top: 85px;
 }
 
 @media only screen and (max-width: 780px) {
@@ -293,7 +301,7 @@
   .search {
     margin: auto;
   }
-  .App {
-    margin-top: 55px;
+  .page-alignment {
+    padding-top: 55px;
   }
 }

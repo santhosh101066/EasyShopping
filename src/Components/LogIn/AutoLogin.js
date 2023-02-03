@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import AxiosApi from "../../Api/AxiosApi";
 import {
+  initialLoad,
   removeUserLogin,
   setAdmin,
   setCartNumber,
@@ -35,13 +36,14 @@ function AutoLogin(props) {
           AxiosApi.get("cartcount").then((res) => {
             dispatch(setCartNumber(res.data.length));
           });
+          dispatch(initialLoad())
         })
         .catch((err) => {
           if (err.response) {
-            console.log(err);
             if (err.response.status === 401) {
               dispatch(notifyUser(err.response.statusText));
               dispatch(removeUserLogin());
+              dispatch(initialLoad())
             }
           } else {
             dispatch(notifyUser(err.message + ": Unable to login"));
