@@ -117,6 +117,7 @@ function Header() {
 
               <div
                 className="category"
+                data-testid="profile"
                 onClick={() => setToggleProfile(!toggleProfile)}
               >
                 <li>
@@ -220,7 +221,7 @@ function Header() {
             </>
           )}
 
-          <div onClick={() => setShow((val) => !val)} className="icon">
+          <div data-testid="navicon" onClick={() => setShow((val) => !val)} className="icon">
             <FontAwesomeIcon icon={faBars} />
           </div>
         </ul>

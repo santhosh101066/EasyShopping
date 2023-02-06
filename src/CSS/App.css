@@ -153,6 +153,7 @@
 }
 
 .notification {
+  pointer-events: none;
   position: fixed;
   transform: translateY(5%);
   right: 2%;

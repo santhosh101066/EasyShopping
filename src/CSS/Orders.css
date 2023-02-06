@@ -20,6 +20,7 @@
   flex-grow: 0.5;
   margin: 0;
   font-size: medium;
+  font-weight: 450;
 }
 .order-info {
   gap: 10px;

@@ -14,6 +14,7 @@ function AddProduct({close}) {
 
   function CreateProduct(e) {
     const data = new FormData(FormDatas.current);
+    console.log(data);
     AxiosApi.post("newproduct", data, {
       headers: { "Content-Type": "multipart/form-data" },
     })
@@ -22,7 +23,6 @@ function AddProduct({close}) {
         FormDatas.current.reset();
       })
       .catch((err) => {
-        console.log(err);
         dispatch(notifyUserError(err.message));
       });
 
