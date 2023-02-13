@@ -12,6 +12,7 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.2.2",
     "base-64": "^1.0.0",
+    "D": "^1.0.0",
     "dotenv": "^16.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -20,13 +21,14 @@
     "react-responsive-carousel": "^3.2.23",
     "react-router-dom": "^6.6.1",
     "react-scripts": "5.0.1",
+    "react-test-renderer": "^18.2.0",
     "react-transition-group": "^4.4.5",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --transformIgnorePatterns \"node_modules/(?!axios)/\" --env=jsdom --coverage ",
+    "test": "react-scripts test --transformIgnorePatterns \"node_modules/(?!axios)/\" --env=jsdom --coverage   ",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -55,6 +57,7 @@
   },
   "devDependencies": {
     "axios-mock-adapter": "^1.21.2",
+    "jest-localstorage-mock": "^2.4.26",
     "jest-preview": "^0.3.1"
   }
 }

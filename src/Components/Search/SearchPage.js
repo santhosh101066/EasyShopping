@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import FullScreenLoader from "../LoadingAnimator/FullScreenLoader";
 import AxiosApi from "../../Api/AxiosApi";
 import { notifyUser } from "../../Redux/Reducer/SendNotification";
-import PageError from "../Alert.js/PageError";
+import PageError from "../Alert/PageError";
 import Categorize from "../Product/Categorize";
 import captalize from "../StringFormat/Captalize";
 import { useSearchParams } from "react-router-dom";

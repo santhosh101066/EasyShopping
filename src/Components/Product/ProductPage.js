@@ -4,13 +4,13 @@ import Categorize from "./Categorize";
 import AxiosApi from "../../Api/AxiosApi";
 import { useDispatch } from "react-redux";
 import { notifyUser } from "../../Redux/Reducer/SendNotification";
-import PageError from "../Alert.js/PageError";
+import PageError from "../Alert/PageError";
 import FullScreenLoader from "../LoadingAnimator/FullScreenLoader";
 import captalize from "../StringFormat/Captalize";
 
 
 function ProductPage(props) {
-  const getParam = useParams();
+  const getParam = useParams(); 
   const [product, getProduct] = useState(null);
   const [error, setError] = useState(null);
   const dispatch = useDispatch();

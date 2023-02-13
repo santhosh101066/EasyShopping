@@ -33,9 +33,6 @@ function AddressGetter({ p_id, quantity, cancel, list, reload }) {
           }).then((res) => {
             cancel(false);
             dispatch(notifyUser("Your Order Have been Placed"));
-            AxiosApi.get("cartcount").then((res) => {
-              dispatch(setCartNumber(res.data.length));
-            });
           });
         }
       } else {
@@ -56,7 +53,7 @@ function AddressGetter({ p_id, quantity, cancel, list, reload }) {
         <h1>Delivery Address</h1>
         <div className="address">
           <form onSubmit={handleInput}>
-            <textarea ref={textarea} name="address" onChange={handleChanges} />
+            <textarea ref={textarea} name="address" placeholder="Enter the Delivery Address" onChange={handleChanges} />
             <div className="address-controls">
               <button type="submit">Confirm to order</button>
               <button

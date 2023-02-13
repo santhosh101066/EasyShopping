@@ -5,7 +5,7 @@ import WishCard from "./WishCard";
 import AxiosApi from "../../Api/AxiosApi";
 import { useDispatch } from "react-redux";
 import { notifyUser } from "../../Redux/Reducer/SendNotification";
-import PageError from "../Alert.js/PageError";
+import PageError from "../Alert/PageError";
 import FullScreenLoader from "../LoadingAnimator/FullScreenLoader";
 import "../../CSS/Cart.css";
 
@@ -17,7 +17,7 @@ function Wishlist(props) {
   const ref=createRef()
 
   useEffect(() => {
-    ref.current.scrollTo(0, 0);
+    window.scrollTo(0, 0);
   }, [ref]);
 
   const wishlistLoader= useCallback(()=>{
@@ -61,12 +61,13 @@ function Wishlist(props) {
             id={val.id}
             price={val.price}
             removeFromlist={removeFromlist}
+            
           />
         ))
       ) : (
         <div><h4>Your wish list is empty</h4></div>
       )}
-      {error && <PageError error={error} loadData={wishlistLoader} />}
+      {error && <PageError error={error.message} loadData={wishlistLoader} />}
       {load&&<FullScreenLoader/>}
     </div>
   );

@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 import AxiosApi, { SERVER } from "../../Api/AxiosApi";
 import { useParams } from "react-router-dom";
-import PageError from "../Alert.js/PageError";
+import PageError from "../Alert/PageError";
 import FullScreenLoader from "../LoadingAnimator/FullScreenLoader";
 import { useDispatch } from "react-redux";
 import { notifyUserError } from "../../Redux/Reducer/SendNotification";
@@ -25,7 +25,6 @@ function DetailedProduct(props) {
     AxiosApi.get("product/detailed/" + param.productId)
       .then((res) => {
         const data = res.data;
-        console.log(res);
         setImage(`${SERVER}/assets/images/${data.id}.png`);
         setImages(() => {
           const img = [];
@@ -35,6 +34,7 @@ function DetailedProduct(props) {
                 key={index}
                 src={`${SERVER}/assets/images/${data.id}_${index}_.png`}
                 alt=""
+                data-testid={'image-'+index}
               />
             );
           }

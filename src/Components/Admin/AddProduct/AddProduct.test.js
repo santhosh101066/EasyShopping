@@ -23,7 +23,6 @@ describe("AddProduct", () => {
     }
     global.FormData=MockFormData
     const formData = new FormData();
-    console.log(formData);
     axios.onPost("newproduct", formData).reply(200, {});
     render(
       <Provider store={Store}>
@@ -36,13 +35,11 @@ describe("AddProduct", () => {
   test("Create Product with exception",()=>{
     const axios = new MockAdapter(AxiosApi);
     class MockFormData{
-      constructor(){
+      constructor(){ 
         this.value=1
       }
     }
     global.FormData=MockFormData
-    const formData = new FormData();
-    console.log(formData);
     axios.onPost("newproduct", {}).reply(200, {});
     render(
       <Provider store={Store}>

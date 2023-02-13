@@ -10,6 +10,7 @@ function Carousels(props) {
     <Carousel showThumbs={false} autoPlay infiniteLoop>
       <div
         className="carosel-container"
+        data-testid="carousel-1"
         onClick={() => {
           navigate("/view/2");
         }}
@@ -17,6 +18,7 @@ function Carousels(props) {
         <img src="/assets/images/carosel1.jpg" alt="carosel" />
       </div>
       <div
+        data-testid="carousel-2"
         className="carosel-container"
         onClick={() => {
           navigate("/view/20");
@@ -26,6 +28,7 @@ function Carousels(props) {
       </div>
       <div
         className="carosel-container"
+        data-testid="carousel-3"
         onClick={() => {
           navigate("/view/19");
         }}

@@ -4,9 +4,13 @@ import { Provider } from "react-redux";
 import Store from "../../Redux/Store/Store";
 import MockAdapter from "axios-mock-adapter";
 import AxiosApi from "../../Api/AxiosApi";
+import * as React from 'react'
 
+jest.mock('react',()=>({
+  ...jest.requireActual('react'),
+  useState:(init)=>[init,()=>jest.fn()]
+}))
 describe("AutoLogin", () => {
-  
   test("User Login", async () => {
     localStorage.setItem("auth", "123");
     const axios = new MockAdapter(AxiosApi);
@@ -84,8 +88,10 @@ describe("AutoLogin", () => {
         </Provider>
       );
   })
+
   test ("Login with network error",()=>{
     localStorage.setItem("auth", "123");
+    jest.spyOn(global,"setTimeout").mockImplementationOnce((a)=>a()) 
     const axios = new MockAdapter(AxiosApi);
     axios.onGet('/validate').networkError()
     render(

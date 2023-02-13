@@ -1,5 +1,5 @@
 import CartBlock from "../Cart/CartBlock";
-import PageError from "../Alert.js/PageError";
+import PageError from "../Alert/PageError";
 import Subtotal from "../Cart/Subtotal";
 import AxiosApi from "../../Api/AxiosApi";
 import FullScreenLoader from "../LoadingAnimator/FullScreenLoader";
@@ -17,9 +17,9 @@ function AddtoCart(props) {
   const [load, setLoad] = useState(false);
   const comp=createRef()
 
-  useEffect(() => {
-    comp.current.scrollTo(0, 0);
-  }, [comp]);
+  // useEffect(() => {
+  //   comp.current.scrollTo(0, 0);
+  // }, [comp]);
 
   const cartLoader = useCallback(() => {
     setLoad(true);
@@ -76,7 +76,7 @@ function AddtoCart(props) {
       )}
       {list.length > 0 && <Subtotal reload={cartLoader} data={list} />}
 
-      {error && <PageError error={error} loadData={cartLoader} />}
+      {error && <PageError error={error.message} loadData={cartLoader} />}
       {load && <FullScreenLoader />}
     </div>
   );

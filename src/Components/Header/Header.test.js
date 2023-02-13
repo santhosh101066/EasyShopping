@@ -12,9 +12,9 @@ jest.mock("react-router-dom", () => ({
   useHref:jest.fn()
 }));
 describe("Headder", () => {
-  test("Scroll", () => {
+  test("Scroll",() => {
     Object.defineProperty(window, "innerWidth", {
-      value: 0,
+      value: 0, 
     });
     render(
       <Provider store={Store}>
@@ -22,10 +22,10 @@ describe("Headder", () => {
       </Provider>
     );
   });
-  test("Headder Clicks", () => {
+  test("Headder Clicks", async() => {
     render(
         <Provider store={Store}>
-          <MemoryRouter>
+          <MemoryRouter> 
           <Header />
           </MemoryRouter>
         </Provider>
@@ -36,7 +36,7 @@ describe("Headder", () => {
         screen.getByText("Easy Shopping").click()
         screen.getByTestId("navicon").click()
     }) 
-    act(()=>{
+   await act(()=>{
         screen.getByText("Login").click()
     })
   });

@@ -7,7 +7,7 @@ export const authKey = createSlice({
     isLogin: false,
     isAdmin: false,
     name: "U",
-    cartNo: 0,
+    cartNo: 0, 
     initilize: localStorage.getItem("auth") ? true : false,
   },
   reducers: {

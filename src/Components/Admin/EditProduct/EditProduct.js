@@ -18,7 +18,6 @@ function EditProduct({ cancel, id, load }) {
       setData(res.data);
     });
   }, [id]);
-
   const handleSave = useCallback(() => {
     if (!filled) {
       if (window.confirm("Are you sure to update details")) {

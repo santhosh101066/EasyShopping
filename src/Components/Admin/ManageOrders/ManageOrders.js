@@ -22,7 +22,6 @@ function ManageOrders(props) {
   const handleChanges = useCallback(
     (e, val) => {
       const status = e.target.value;
-      console.log(e.target.value, val);
       AxiosApi.put("adminorder/" + val.id, {
         user_id: val.user_id,
         quantity: val.quantity,
@@ -55,6 +54,7 @@ function ManageOrders(props) {
               <select
                 defaultValue={val.status}
                 onChange={(e) => handleChanges(e, val)}
+                data-testid="select-test"
               >
                 <option value={"Order Placed"}>Order Placed</option>
                 <option value={"Shipped"}>Shipped</option>

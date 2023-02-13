@@ -8,7 +8,7 @@ import Order from "../Orders/Order";
 import AddtoCart from "../Cart/AddtoCart";
 import ManageOrders from "../Admin/ManageOrders/ManageOrders";
 import SearchPage from "../Search/SearchPage";
-import PageNotFound from "../Alert.js/PageNotFound";
+import PageNotFound from "../Alert/PageNotFound";
 import { Route, Routes } from "react-router-dom";
 import { useSelector } from "react-redux";
 

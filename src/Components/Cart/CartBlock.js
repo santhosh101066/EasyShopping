@@ -25,7 +25,7 @@ function CartBlock({
         p_id: id,
         quantity: qty,
       }).then(() => {
-        console.log("updated");
+      
       });
     },
     [cart_id, id]
@@ -86,6 +86,7 @@ function CartBlock({
         </span>
         <span>
           <button
+          data-testid="cart-delete"
             className="delete"
             onClick={(e) => {
               removeFromCart(id);
